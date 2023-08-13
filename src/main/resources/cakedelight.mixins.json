@@ -1,0 +1,11 @@
+{
+	"required": false,
+	"package": "top.ilov.mcmods.cakedelight.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"CakeDelightMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

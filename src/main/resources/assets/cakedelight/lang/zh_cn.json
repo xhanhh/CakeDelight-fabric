@@ -1,0 +1,16 @@
+{
+  "cakedelight.name": "蛋糕乐事",
+  "block.cakedelight.ekac": "糕蛋",
+  "item.cakedelight.ekac_hat": "糕蛋帽",
+  "item.cakedelight.small_ekac": "小糕蛋",
+  "item.cakedelight.eggs_with_tomato": "番茄炒蛋",
+  "item.cakedelight.cream": "奶油",
+  "item.cakedelight.ekac_slice": "糕蛋切片",
+  "item.cakedelight.tomato_egg_noodle_soup": "西红柿鸡蛋面",
+  "item.cakedelight.cream_of_mushroom_soup": "奶油蘑菇汤",
+  "item.cakedelight.porcelain_bowl": "瓷碗",
+  "item.cakedelight.unfired_porcelain_bowl": "未烧制的瓷碗",
+
+  "modmenu.nameTranslation.cakedelight": "蛋糕乐事",
+  "modmenu.descriptionTranslation.cakedelight": "丰富了蛋糕的制作工艺和种类。"
+}

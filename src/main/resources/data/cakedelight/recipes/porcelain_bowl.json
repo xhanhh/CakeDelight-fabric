@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "cakedelight:unfired_porcelain_bowl"
+  },
+  "result": "cakedelight:porcelain_bowl",
+  "experience": 0.10,
+  "cookingtime": 200
+}
+

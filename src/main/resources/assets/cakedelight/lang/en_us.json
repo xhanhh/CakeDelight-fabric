@@ -1,0 +1,16 @@
+{
+  "cakedelight.name": "Cake Delight",
+  "block.cakedelight.ekac": "ekaC",
+  "item.cakedelight.ekac_hat": "ekaC Hat",
+  "item.cakedelight.small_ekac": "Small ekaC",
+  "item.cakedelight.eggs_with_tomato": "Scrambled eggs with tomato",
+  "item.cakedelight.cream": "Cream",
+  "item.cakedelight.ekac_slice": "Slice of ekaC",
+  "item.cakedelight.tomato_egg_noodle_soup": "Tomato Egg Noodle Soup",
+  "item.cakedelight.cream_of_mushroom_soup": "Cream of Mushroom Soup",
+  "item.cakedelight.porcelain_bowl": "Porcelain bowl",
+  "item.cakedelight.unfired_porcelain_bowl": "Unfired Porcelain bowl",
+
+  "modmenu.nameTranslation.cakedelight": "Cake Delight",
+  "modmenu.descriptionTranslation.cakedelight": "Some meals about cake."
+}
