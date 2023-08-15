@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "cakedelight:block/pink_candle_ekac"
+    },
+    "lit=true": {
+      "model": "cakedelight:block/pink_candle_ekac_lit"
+    }
+  }
+}

@@ -11,6 +11,24 @@
   "item.cakedelight.porcelain_bowl": "瓷碗",
   "item.cakedelight.unfired_porcelain_bowl": "未烧制的瓷碗",
 
+  "block.cakedelight.candle_ekac": "ekaC with Candle",
+  "block.cakedelight.white_candle_ekac": "ekaC with White Candle",
+  "block.cakedelight.orange_candle_ekac": "ekaC with Orange Candle",
+  "block.cakedelight.magenta_candle_ekac": "ekaC with Magenta Candle",
+  "block.cakedelight.light_blue_candle_ekac": "ekaC with Light Blue Candle",
+  "block.cakedelight.yellow_candle_ekac": "ekaC with Yellow Candle",
+  "block.cakedelight.lime_candle_ekac": "ekaC with Lime Candle",
+  "block.cakedelight.pink_candle_ekac": "ekaC with Pink Candle",
+  "block.cakedelight.gray_candle_ekac": "ekaC with Gray Candle",
+  "block.cakedelight.light_gray_candle_ekac": "ekaC with Light Gray Candle",
+  "block.cakedelight.cyan_candle_ekac": "ekaC with Cyan Candle",
+  "block.cakedelight.purple_candle_ekac": "ekaC with Purple Candle",
+  "block.cakedelight.blue_candle_ekac": "ekaC with Blue Candle",
+  "block.cakedelight.brown_candle_ekac": "ekaC with Brown Candle",
+  "block.cakedelight.green_candle_ekac": "ekaC with Green Candle",
+  "block.cakedelight.red_candle_ekac": "ekaC with Red Candle",
+  "block.cakedelight.black_candle_ekac": "ekaC with Black Candle",
+
   "modmenu.nameTranslation.cakedelight": "蛋糕乐事",
   "modmenu.descriptionTranslation.cakedelight": "丰富了蛋糕的制作工艺和种类。"
 }

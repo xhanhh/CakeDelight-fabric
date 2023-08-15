@@ -9,8 +9,8 @@
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/ekac",
-		"sources": "https://github.com/xhanhh/ekac-fabric",
-		"issues": "https://github.com/xhanhh/ekac-fabric/issues"
+		"sources": "https://github.com/xhanhh/CakeDelight-fabric",
+		"issues": "https://github.com/xhanhh/CakeDelight-fabric/issues"
 	},
 	"license": "CC BY-NC-SA 4.0",
 	"icon": "assets/cakedelight/cakedelight_logo.png",

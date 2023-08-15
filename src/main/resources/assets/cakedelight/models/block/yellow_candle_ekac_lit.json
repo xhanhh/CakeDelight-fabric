@@ -1,0 +1,10 @@
+{
+  "parent": "cakedelight:block/template_ekac_with_candle",
+  "textures": {
+    "bottom": "cakedelight:block/ekac/ekac_bottom",
+    "candle": "minecraft:block/yellow_candle_lit",
+    "particle": "cakedelight:block/ekac/ekac_side",
+    "side": "cakedelight:block/ekac/ekac_side",
+    "top": "cakedelight:block/ekac/ekac_top"
+  }
+}
