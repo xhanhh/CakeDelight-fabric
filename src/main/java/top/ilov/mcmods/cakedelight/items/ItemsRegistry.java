@@ -27,6 +27,9 @@ public class ItemsRegistry {
     public static final Item cream_of_mushroom_soup = registerItem("cream_of_mushroom_soup",
             new Item(new FabricItemSettings().food(CDFoodComponents.cream_of_mushroom_soup)));
 
+    public static final Item tomatoes_with_tomatoes = registerItem("tomatoes_with_tomatoes",
+            new Item(new FabricItemSettings().food(CDFoodComponents.tomatoes_with_tomatoes)));
+
     protected static Item registerItem(String name, Item item) {
 
         return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), item);

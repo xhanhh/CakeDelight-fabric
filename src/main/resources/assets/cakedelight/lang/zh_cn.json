@@ -10,6 +10,7 @@
   "item.cakedelight.cream_of_mushroom_soup": "奶油蘑菇汤",
   "item.cakedelight.porcelain_bowl": "瓷碗",
   "item.cakedelight.unfired_porcelain_bowl": "未烧制的瓷碗",
+  "item.cakedelight.tomatoes_with_tomatoes": "西红柿炒番茄",
 
   "block.cakedelight.candle_ekac": "ekaC with Candle",
   "block.cakedelight.white_candle_ekac": "ekaC with White Candle",
@@ -30,5 +31,5 @@
   "block.cakedelight.black_candle_ekac": "ekaC with Black Candle",
 
   "modmenu.nameTranslation.cakedelight": "蛋糕乐事",
-  "modmenu.descriptionTranslation.cakedelight": "丰富了蛋糕的制作工艺和种类。"
+  "modmenu.descriptionTranslation.cakedelight": "各种有趣的食物~"
 }

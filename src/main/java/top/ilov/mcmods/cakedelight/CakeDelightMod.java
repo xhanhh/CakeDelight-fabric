@@ -42,15 +42,16 @@ public class CakeDelightMod implements ModInitializer {
 				.icon(() -> new ItemStack(BlocksRegistry.ekac))
 				.entries((context, entries) -> {
 					entries.add(BlocksRegistry.ekac);
-					entries.add(ItemsRegistry.ekac_hat);
 					entries.add(ItemsRegistry.ekac_slice);
 					entries.add(ItemsRegistry.small_ekac);
+					entries.add(ItemsRegistry.ekac_hat);
 					entries.add(ItemsRegistry.unfired_porcelain_bowl);
 					entries.add(ItemsRegistry.porcelain_bowl);
 					entries.add(ItemsRegistry.cream);
 					entries.add(ItemsRegistry.eggs_with_tomato);
 					entries.add(ItemsRegistry.tomato_egg_noodle_soup);
 					entries.add(ItemsRegistry.cream_of_mushroom_soup);
+					entries.add(ItemsRegistry.tomatoes_with_tomatoes);
 				})
 				.build()
 		);
