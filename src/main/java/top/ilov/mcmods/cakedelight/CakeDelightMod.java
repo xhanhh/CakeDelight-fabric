@@ -53,6 +53,7 @@ public class CakeDelightMod implements ModInitializer {
 					entries.add(ItemsRegistry.tomato_egg_noodle_soup);
 					entries.add(ItemsRegistry.cream_of_mushroom_soup);
 					entries.add(ItemsRegistry.tomatoes_with_tomatoes);
+					entries.add(ItemsRegistry.stewed_beef_with_tomato);
 				})
 				.build()
 		);

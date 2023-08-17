@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:crops/tomato"
+    },
+    {
+      "item": "minecraft:beef"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "cakedelight:stewed_beef_with_tomato"
+  },
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "experience": 0.2,
+  "cookingtime": 180
+}

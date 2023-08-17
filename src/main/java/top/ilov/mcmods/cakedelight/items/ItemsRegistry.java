@@ -30,6 +30,8 @@ public class ItemsRegistry {
 
     public static final Item tomatoes_with_tomatoes = registerItem("tomatoes_with_tomatoes",
             new Item(new FabricItemSettings().food(CDFoodComponents.tomatoes_with_tomatoes)));
+    public static final Item stewed_beef_with_tomato = registerItem("stewed_beef_with_tomato",
+            new Item(new FabricItemSettings().food(CDFoodComponents.stewed_beef_with_tomato)));
 
     protected static Item registerItem(String name, Item item) {
 
