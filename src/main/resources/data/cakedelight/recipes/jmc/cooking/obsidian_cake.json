@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["jmc"]
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:milks"
+    },
+    {
+      "item": "minecraft:obsidian"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "jmc:obsidian_cake"
+  },
+  "container": {
+    "item": "cakedelight:cake_base"
+  },
+  "experience": 1.0,
+  "cookingtime": 180
+}

@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["jmc"]
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:cheese"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "jmc:cheesecake"
+  },
+  "container": {
+    "item": "cakedelight:cake_base"
+  },
+  "experience": 0.7,
+  "cookingtime": 180
+}

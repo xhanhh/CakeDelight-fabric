@@ -29,7 +29,7 @@ public class CakeDelightMod implements ModInitializer {
 
 		if (!FabricLoader.getInstance().isModLoaded("farmersdelight")) {
 
-			LOGGER.error("There's no Farmer's Delight mod founded.");
+			LOGGER.error("There's no Farmer's Delight mod found.");
 
 		} else {
 
@@ -45,6 +45,7 @@ public class CakeDelightMod implements ModInitializer {
 					entries.add(ItemsRegistry.ekac_slice);
 					entries.add(ItemsRegistry.small_ekac);
 					entries.add(ItemsRegistry.ekac_hat);
+					entries.add(ItemsRegistry.cake_base);
 					entries.add(ItemsRegistry.unfired_porcelain_bowl);
 					entries.add(ItemsRegistry.porcelain_bowl);
 					entries.add(ItemsRegistry.cream);

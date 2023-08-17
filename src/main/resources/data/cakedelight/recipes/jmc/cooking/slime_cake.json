@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["jmc"]
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:slime_balls"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "jmc:slime_cake"
+  },
+  "container": {
+    "item": "cakedelight:cake_base"
+  },
+  "experience": 0.8,
+  "cookingtime": 180
+}

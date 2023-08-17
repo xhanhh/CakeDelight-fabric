@@ -17,6 +17,7 @@ public class ItemsRegistry {
 
     public static final Item porcelain_bowl = registerItem("porcelain_bowl", new Item(new FabricItemSettings().maxCount(64)));
     public static final Item unfired_porcelain_bowl = registerItem("unfired_porcelain_bowl", new Item(new FabricItemSettings().maxCount(64)));
+    public static final Item cake_base = registerItem("cake_base", new Item(new FabricItemSettings().maxCount(64)));
 
     public static final Item small_ekac = registerItem("small_ekac", new Item(new FabricItemSettings().food(CDFoodComponents.small_ekac)));
     public static final Item cream = registerItem("cream", new Item(new FabricItemSettings().food(CDFoodComponents.cream)));

@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:milks"
+    },
+    {
+      "tag": "c:milks"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "minecraft:cake"
+  },
+  "container": {
+    "item": "cakedelight:cake_base"
+  },
+  "cookingtime": 180
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    " C ",
+    "AAA",
+    "   "
+  ],
+
+  "key":
+  {
+    "A":
+    {
+      "item": "minecraft:wheat"
+    },
+    "C":
+    {
+      "item": "minecraft:egg"
+    }
+  },
+
+  "result":
+  {
+    "item": "cakedelight:cake_base",
+    "count": 3
+  }
+}

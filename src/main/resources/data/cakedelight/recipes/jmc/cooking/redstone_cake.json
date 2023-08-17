@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["jmc"]
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:milks"
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "jmc:redstone_cake"
+  },
+  "container": {
+    "item": "cakedelight:cake_base"
+  },
+  "experience": 0.5,
+  "cookingtime": 180
+}
