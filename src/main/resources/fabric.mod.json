@@ -18,6 +18,9 @@
 	"entrypoints": {
 		"main": [
 			"top.ilov.mcmods.cakedelight.CakeDelightMod"
+		],
+		"rei_client": [
+			"top.ilov.mcmods.cakedelight.integration.rei.CakeREIPlugin"
 		]
 	},
 	"mixins": [
@@ -36,7 +39,7 @@
 	},
 	"custom": {
 		"modmenu": {
-			"update_checker": false,
+			"update_checker": true,
 			"links": {
 				"modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/cake-delight"
 			}
