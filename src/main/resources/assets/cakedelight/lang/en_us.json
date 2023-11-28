@@ -32,6 +32,9 @@
   "block.cakedelight.red_candle_ekac": "Upside down Cake with Red Candle",
   "block.cakedelight.black_candle_ekac": "Upside down Cake with Black Candle",
 
+  "tooltip.cakedelight.shift": "§7Hold§r §eShift",
+  "tooltip.cakedelight.ekac": "§7It's a meme called ekaC when someone puts the cake recipe upside down",
+
   "modmenu.nameTranslation.cakedelight": "Cake Delight",
   "modmenu.descriptionTranslation.cakedelight": "Some interesting food ~"
 }

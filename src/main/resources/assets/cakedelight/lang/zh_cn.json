@@ -32,6 +32,9 @@
   "block.cakedelight.red_candle_ekac": "糕蛋和红色蜡烛",
   "block.cakedelight.black_candle_ekac": "糕蛋和黑色蜡烛",
 
+  "tooltip.cakedelight.shift": "§7按住§r §eShift§r §7以浏览更多",
+  "tooltip.cakedelight.ekac": "§7上面三个小麦，下面三个牛奶",
+
   "modmenu.nameTranslation.cakedelight": "蛋糕乐事",
   "modmenu.descriptionTranslation.cakedelight": "各种有趣的食物~"
 }

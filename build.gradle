@@ -22,14 +22,6 @@ repositories {
 }
 
 loom {
-    splitEnvironmentSourceSets()
-
-	mods {
-		"cake-delight" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
 
 }
 
