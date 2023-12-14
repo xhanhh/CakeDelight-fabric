@@ -35,6 +35,11 @@
   "tooltip.cakedelight.shift": "§7按住§r §eShift§r §7以浏览更多",
   "tooltip.cakedelight.ekac": "§7上面三个小麦，下面三个牛奶",
 
+  "config.cakedelight.title": "蛋糕乐事 - 设置",
+  "config.cakedelight.general": "通用",
+  "config.cakedelight.enable_eating_ekac_sound": "启用食用糕蛋时的音效",
+  "config.cakedelight.enable_eating_ekac_sound.tooltip": "该音效相比原版的蛋糕是倒放的。",
+
   "modmenu.nameTranslation.cakedelight": "蛋糕乐事",
   "modmenu.descriptionTranslation.cakedelight": "各种有趣的食物~"
 }

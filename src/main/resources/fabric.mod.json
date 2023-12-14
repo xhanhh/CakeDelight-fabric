@@ -21,6 +21,9 @@
 		],
 		"rei_client": [
 			"top.ilov.mcmods.cakedelight.integration.rei.CakeREIPlugin"
+		],
+		"modmenu": [
+			"top.ilov.mcmods.cakedelight.integration.modmenu.CakeMenu"
 		]
 	},
 	"mixins": [

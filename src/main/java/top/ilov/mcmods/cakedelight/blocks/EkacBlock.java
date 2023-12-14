@@ -79,7 +79,7 @@ public class EkacBlock extends CakeBlock {
 
         Random random = new Random();
 
-        if (CakeDelightMod.CONFIG.isEnableEkacSound()) {
+        if (CakeDelightMod.CONFIG.isEnableEkacSound() | FabricLoader.getInstance().isModLoaded("cakechomps")) {
             player.playSound(SoundsRegistry.eat_ekac, 0.5f + 0.4f * (float) random.nextInt(2),
                     (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
         }

@@ -35,6 +35,11 @@
   "tooltip.cakedelight.shift": "§7Hold§r §eShift",
   "tooltip.cakedelight.ekac": "§7It's a meme called ekaC when someone puts the cake recipe upside down",
 
+  "config.cakedelight.title": "Cake Delight settings",
+  "config.cakedelight.general": "General",
+  "config.cakedelight.enable_eating_ekac_sound": "Enable the sound of eating Upside down Cake(ekaC)",
+  "config.cakedelight.enable_eating_ekac_sound.tooltip": "Compared to vanilla cake, the sound is inverted.",
+
   "modmenu.nameTranslation.cakedelight": "Cake Delight",
   "modmenu.descriptionTranslation.cakedelight": "Some interesting food ~"
 }
