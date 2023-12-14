@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 import top.ilov.mcmods.cakedelight.items.ItemsRegistry;
+import top.ilov.mcmods.cakedelight.sounds.SoundsRegistry;
 
 import static top.ilov.mcmods.cakedelight.ItemGroup.ITEM_GROUP;
 
@@ -21,11 +22,16 @@ public class CakeDelightMod implements ModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("Cake Delight");
 
+	public static CakeConfig CONFIG = new CakeConfig();
+
 	@Override
 	public void onInitialize() {
 
 		ItemsRegistry.registerItems();
 		BlocksRegistry.registerBlocks();
+		SoundsRegistry.registerSounds();
+
+		CONFIG = CakeConfig.loadConfig();
 
 		if (!FabricLoader.getInstance().isModLoaded("farmersdelight")) {
 

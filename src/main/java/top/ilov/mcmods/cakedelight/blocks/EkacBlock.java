@@ -2,6 +2,7 @@ package top.ilov.mcmods.cakedelight.blocks;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
@@ -25,8 +26,11 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
+import top.ilov.mcmods.cakedelight.CakeDelightMod;
+import top.ilov.mcmods.cakedelight.sounds.SoundsRegistry;
 
 import java.util.List;
+import java.util.Random;
 
 public class EkacBlock extends CakeBlock {
 
@@ -72,6 +76,14 @@ public class EkacBlock extends CakeBlock {
         }
         player.incrementStat(Stats.EAT_CAKE_SLICE);
         player.getHungerManager().add(2, 0.1f);
+
+        Random random = new Random();
+
+        if (CakeDelightMod.CONFIG.isEnableEkacSound()) {
+            player.playSound(SoundsRegistry.eat_ekac, 0.5f + 0.4f * (float) random.nextInt(2),
+                    (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        }
+
         int i = state.get(BITES);
         world.emitGameEvent(player, GameEvent.EAT, pos);
         if (i < 6) {

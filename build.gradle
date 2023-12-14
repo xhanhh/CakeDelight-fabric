@@ -35,7 +35,8 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "curse.maven:farmers-delight-fabric-482834:4640640"
+	modImplementation "curse.maven:farmers-delight-fabric-482834:4939709"
+	//modImplementation "curse.maven:cake-chomps-307943:4592010"
 
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
