@@ -5,11 +5,12 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import top.ilov.mcmods.cakedelight.CakeItemGroup;
 
 import java.util.function.ToIntFunction;
 
@@ -17,8 +18,8 @@ import static top.ilov.mcmods.cakedelight.CakeDelightMod.MOD_ID;
 
 public class BlocksRegistry {
 
-    public static final CakeBlock ekac = registerCakeBlock("ekac", new EkacBlock(FabricBlockSettings.create().hardness(0.5F)
-            .sounds(BlockSoundGroup.WOOL)));
+    public static final CakeBlock ekac = registerCakeBlock("ekac", new EkacBlock(FabricBlockSettings.of(Material.CAKE).hardness(0.5F)
+            .sounds(BlockSoundGroup.WOOL)), CakeItemGroup.itemgroup);
 
     public static final Block candle_ekac = registerBlock("candle_ekac", new CandleEkacBlock(Blocks.CANDLE, AbstractBlock.Settings.copy(ekac)
             .luminance(BlocksRegistry.createLightLevelFromLitBlockState(3))));
@@ -58,26 +59,26 @@ public class BlocksRegistry {
     protected static Block registerBlock(String name, Block block) {
 
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(MOD_ID, name), block);
+        return Registry.register(Registry.BLOCK, new Identifier(MOD_ID, name), block);
 
     }
 
     protected static Item registerBlockItem(String name, Block block) {
 
-        return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
+        return Registry.register(Registry.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
 
     }
 
-    protected static CakeBlock registerCakeBlock(String name, CakeBlock block) {
+    protected static CakeBlock registerCakeBlock(String name, CakeBlock block, ItemGroup group) {
 
-        registerCakeBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(MOD_ID, name), block);
+        registerCakeBlockItem(name, block, group);
+        return Registry.register(Registry.BLOCK, new Identifier(MOD_ID, name), block);
 
     }
 
-    protected static Item registerCakeBlockItem(String name, CakeBlock block) {
+    protected static Item registerCakeBlockItem(String name, CakeBlock block, ItemGroup group) {
 
-        return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
+        return Registry.register(Registry.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new FabricItemSettings().group(group)));
 
     }
 

@@ -1,5 +1,6 @@
 package top.ilov.mcmods.cakedelight.items.materials;
 
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
@@ -13,29 +14,21 @@ import java.util.function.Supplier;
 
 public enum CakeDelightMaterials implements ArmorMaterial {
 
-    EKAC("ekac", 5, Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {
-        map.put(ArmorItem.Type.BOOTS, 1);
-        map.put(ArmorItem.Type.LEGGINGS, 1);
-        map.put(ArmorItem.Type.CHESTPLATE, 1);
-        map.put(ArmorItem.Type.HELMET, 2);
-    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.ofItems(BlocksRegistry.ekac));
+    EKAC("ekac", 5, new int[]{1, 1, 1, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F,
+            () -> Ingredient.ofItems(BlocksRegistry.ekac));
 
-    private static final EnumMap BASE_DURABILITY = Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {
-        map.put(ArmorItem.Type.BOOTS, 13);
-        map.put(ArmorItem.Type.LEGGINGS, 15);
-        map.put(ArmorItem.Type.CHESTPLATE, 16);
-        map.put(ArmorItem.Type.HELMET, 11);
-    });
+    private static final int[] BASE_DURABILITY = new int[]{13, 15, 16, 11};
     private final String name;
     private final int durabilityMultiplier;
-    private final EnumMap<ArmorItem.Type, Integer> protectionAmounts;
+    private final int[] protectionAmounts;
     private final int enchantability;
     private final SoundEvent equipSound;
     private final float toughness;
     private final float knockbackResistance;
     private final Lazy<Ingredient> repairIngredientSupplier;
 
-    CakeDelightMaterials(String name, int durabilityMultiplier, EnumMap<ArmorItem.Type, Integer> protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
+    CakeDelightMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance,
+                     Supplier repairIngredientSupplier) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.protectionAmounts = protectionAmounts;
@@ -46,12 +39,12 @@ public enum CakeDelightMaterials implements ArmorMaterial {
         this.repairIngredientSupplier = new Lazy<>(repairIngredientSupplier);
     }
 
-    public int getDurability(ArmorItem.Type type) {
-        return (Integer)BASE_DURABILITY.get(type) * this.durabilityMultiplier;
+    public int getDurability(EquipmentSlot slot) {
+        return BASE_DURABILITY[slot.getEntitySlotId()] * this.durabilityMultiplier;
     }
 
-    public int getProtection(ArmorItem.Type type) {
-        return this.protectionAmounts.get(type);
+    public int getProtectionAmount(EquipmentSlot slot) {
+        return this.protectionAmounts[slot.getEntitySlotId()];
     }
 
     public int getEnchantability() {

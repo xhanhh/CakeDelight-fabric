@@ -1,13 +1,13 @@
 pluginManagement {
-	repositories {
-		maven { url 'https://maven.aliyun.com/repository/public/' }
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
 		maven { url 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
-		maven {
-			name = 'Fabric'
-			url = 'https://maven.fabricmc.net/'
-		}
-
-		mavenCentral()
-		gradlePluginPortal()
-	}
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
 }

@@ -31,10 +31,10 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.15.1",
-		"minecraft": ">=1.20",
+		"minecraft": ">=1.19",
 		"java": ">=17",
 		"fabric-api": "*",
-		"farmersdelight": ">=1.20.1-1.4.3"
+		"farmersdelight": ">=1.3.10.2"
 	},
 	"suggests": {
 		"modmenu": "*",

@@ -3,8 +3,11 @@ package top.ilov.mcmods.cakedelight.integration.rei;
 import me.shedaniel.rei.api.client.entry.filtering.base.BasicFilteringRule;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.common.util.EntryStacks;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 
+@Environment(EnvType.CLIENT)
 public class CakeREIPlugin implements REIClientPlugin {
 
     @Override
