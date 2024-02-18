@@ -19,6 +19,7 @@ public class BlocksRegistry {
 
     public static final CakeBlock ekac = registerCakeBlock("ekac", new EkacBlock(FabricBlockSettings.create().hardness(0.5F)
             .sounds(BlockSoundGroup.WOOL)));
+    public static final CakeBlock end_cake = registerCakeBlock("end_cake", new EndCakeBlock(FabricBlockSettings.create().hardness(0.5F).sounds(BlockSoundGroup.WOOL)));
 
     public static final Block candle_ekac = registerBlock("candle_ekac", new CandleEkacBlock(Blocks.CANDLE, AbstractBlock.Settings.copy(ekac)
             .luminance(BlocksRegistry.createLightLevelFromLitBlockState(3))));

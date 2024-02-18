@@ -32,8 +32,11 @@
   "block.cakedelight.red_candle_ekac": "Upside down Cake with Red Candle",
   "block.cakedelight.black_candle_ekac": "Upside down Cake with Black Candle",
 
+  "block.cakedelight.end_cake": "End Cake",
+
   "tooltip.cakedelight.shift": "§7Hold§r §eShift",
   "tooltip.cakedelight.ekac": "§7It's a meme called ekaC when someone puts the cake recipe upside down",
+  "msg.cakedelight.cannot_eat_end_cake": "You can't eat End Cake at the end",
 
   "config.cakedelight.title": "Cake Delight settings",
   "config.cakedelight.general": "General",

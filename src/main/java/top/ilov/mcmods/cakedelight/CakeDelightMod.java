@@ -47,6 +47,7 @@ public class CakeDelightMod implements ModInitializer {
 				.displayName(Text.translatable("cakedelight.name"))
 				.icon(() -> new ItemStack(BlocksRegistry.ekac))
 				.entries((context, entries) -> {
+					entries.add(BlocksRegistry.end_cake);
 					entries.add(BlocksRegistry.ekac);
 					entries.add(ItemsRegistry.ekac_slice);
 					entries.add(ItemsRegistry.small_ekac);
