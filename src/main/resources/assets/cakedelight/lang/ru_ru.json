@@ -1,0 +1,48 @@
+{
+  "cakedelight.name": "Тортовый восторг",
+  "block.cakedelight.ekac": "Перевёрнутый торт",
+  "item.cakedelight.ekac_hat": "Шляпа из перевёрнутого торта",
+  "item.cakedelight.small_ekac": "Маленький перевёрнутый торт",
+  "item.cakedelight.eggs_with_tomato": "Омлет с томатами",
+  "item.cakedelight.cream": "Крем",
+  "item.cakedelight.ekac_slice": "Кусочек перевёрнутого торта",
+  "item.cakedelight.tomato_egg_noodle_soup": "Томатно-яичный суп с лапшой",
+  "item.cakedelight.cream_of_mushroom_soup": "Крем-суп из грибов",
+  "item.cakedelight.porcelain_bowl": "Фарфоровая чаша",
+  "item.cakedelight.unfired_porcelain_bowl": "Необожжённая фарфоровая чаша",
+  "item.cakedelight.tomatoes_with_tomatoes": "Омлет из помидоров с томатным пюре",
+  "item.cakedelight.cake_base": "Основа для торта",
+  "item.cakedelight.stewed_beef_with_tomato": "Тушёная говяжья грудинка с помидорами",
+
+  "block.cakedelight.candle_ekac": "Перевёрнутый торт со свечой",
+  "block.cakedelight.white_candle_ekac": "Перевёрнутый торт с белой свечой",
+  "block.cakedelight.orange_candle_ekac": "Перевёрнутый торт с оранжевой свечой",
+  "block.cakedelight.magenta_candle_ekac": "Перевёрнутый торт с пурпурной свечой",
+  "block.cakedelight.light_blue_candle_ekac": "Перевёрнутый торт с голубой свечой",
+  "block.cakedelight.yellow_candle_ekac": "Перевёрнутый торт с жёлтой свечой",
+  "block.cakedelight.lime_candle_ekac": "Перевёрнутый торт с лаймовой свечой",
+  "block.cakedelight.pink_candle_ekac": "Перевёрнутый торт с розовой свечой",
+  "block.cakedelight.gray_candle_ekac": "Перевёрнутый торт с серой свечой",
+  "block.cakedelight.light_gray_candle_ekac": "Перевёрнутый торт со светло-серой свечой",
+  "block.cakedelight.cyan_candle_ekac": "Перевёрнутый торт с бирюзовой свечой",
+  "block.cakedelight.purple_candle_ekac": "Перевёрнутый торт с фиолетовой свечой",
+  "block.cakedelight.blue_candle_ekac": "Перевёрнутый торт с синей свечой",
+  "block.cakedelight.brown_candle_ekac": "Перевёрнутый торт с коричневой свечой",
+  "block.cakedelight.green_candle_ekac": "Перевёрнутый торт с зелёной свечой",
+  "block.cakedelight.red_candle_ekac": "Перевёрнутый торт с красной свечой",
+  "block.cakedelight.black_candle_ekac": "Перевёрнутый торт с чёрной свечой",
+
+  "block.cakedelight.end_cake": "Эндер-торт",
+
+  "tooltip.cakedelight.shift": "§7Удерживайте§r §eShift",
+  "tooltip.cakedelight.ekac": "§7Это мем под названием «троТ», когда кто-то переворачивает рецепт торта вверх ногами",
+  "msg.cakedelight.cannot_eat_end_cake": "Ты не можешь съесть Эндер-торт в Энде",
+
+  "config.cakedelight.title": "Настройки «Тортового восторга»",
+  "config.cakedelight.general": "Общие",
+  "config.cakedelight.enable_eating_ekac_sound": "Включить звук при поедании перевернутого торта",
+  "config.cakedelight.enable_eating_ekac_sound.tooltip": "По сравнению с ванильным тортом, звук получается перевёрнутым.",
+
+  "modmenu.nameTranslation.cakedelight": "Тортовый восторг",
+  "modmenu.descriptionTranslation.cakedelight": "Довольно интересная еда"
+}
