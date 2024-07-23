@@ -1,4 +1,4 @@
-package top.ilov.mcmods.cakedelight.blocks;
+package top.ilov.mcmods.cakedelight.blocks.cakes;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,10 +15,10 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionTypes;
+import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
 
-public class EndCakeBlock extends CakePortalBase{
-
-    public EndCakeBlock(Settings settings) {
+public class OverworldCakeBlock extends CakePortalBase {
+    public OverworldCakeBlock(Settings settings) {
         super(settings);
     }
 
@@ -30,9 +30,9 @@ public class EndCakeBlock extends CakePortalBase{
 
         if (world instanceof ServerWorld && !player.isSpectator() && itemStack.isEmpty()) {
 
-            if (player.getWorld().getDimensionKey() != DimensionTypes.THE_END) {
+            if (player.getWorld().getDimensionKey() != DimensionTypes.OVERWORLD) {
 
-                RegistryKey<World> registryKey = world.getRegistryKey() == World.END ? World.OVERWORLD : World.END;
+                RegistryKey<World> registryKey = World.OVERWORLD;
                 ServerWorld serverWorld = ((ServerWorld)world).getServer().getWorld(registryKey);
 
                 if (serverWorld == null) {
@@ -43,15 +43,16 @@ public class EndCakeBlock extends CakePortalBase{
                 player.moveToWorld(serverWorld);
                 return ActionResult.SUCCESS;
             } else {
-                player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_end_cake"),true);
+                player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake"),true);
             }
 
         }
 
-        if (itemStack.getItem() == Items.ENDER_EYE && state.get(BITES) > 0 && !world.isClient) {
+        if (itemStack.getItem() == Items.MILK_BUCKET && state.get(BITES) > 0 && !world.isClient) {
 
             world.setBlockState(pos, state.with(BITES, state.get(BITES) - 1));
             itemStack.decrement(1);
+            player.setStackInHand(hand, new ItemStack(Items.BUCKET));
 
         }
 

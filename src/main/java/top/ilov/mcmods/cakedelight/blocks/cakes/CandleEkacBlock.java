@@ -1,4 +1,4 @@
-package top.ilov.mcmods.cakedelight.blocks;
+package top.ilov.mcmods.cakedelight.blocks.cakes;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
@@ -24,6 +24,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
+import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class CandleEkacBlock extends AbstractCandleBlock {
     private static final Iterable<Vec3d> PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5, 1.0, 0.5));
     private static final Map<Block, CandleEkacBlock> CANDLES_TO_CANDLE_CAKES = Maps.newHashMap();
 
-    protected CandleEkacBlock(Block candle, AbstractBlock.Settings settings) {
+    public CandleEkacBlock(Block candle, AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(LIT, false));
         CANDLES_TO_CANDLE_CAKES.put(candle, this);
@@ -56,7 +57,7 @@ public class CandleEkacBlock extends AbstractCandleBlock {
                 return ActionResult.success(world.isClient);
 
         }
-        if (!(CandleEkacBlock.isHittingCandle(hit) && player.getStackInHand(hand).isEmpty() && state.get(LIT).booleanValue())) {
+        if (!(CandleEkacBlock.isHittingCandle(hit) && player.getStackInHand(hand).isEmpty() && state.get(LIT))) {
             ActionResult actionResult = EkacBlock.tryEat(world, pos, BlocksRegistry.ekac.getDefaultState(), player);
             if (actionResult.isAccepted()) {
                 CandleEkacBlock.dropStacks(state, world, pos);

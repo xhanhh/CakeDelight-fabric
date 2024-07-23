@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.4-SNAPSHOT'
+	id 'fabric-loom' version '1.7-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -20,6 +20,26 @@ repositories {
 	maven { url "https://maven.shedaniel.me/" }
 	maven { url "https://maven.architectury.dev/" }
 	maven { url "https://maven.terraformersmc.com/releases/" }
+
+	maven {
+		name = "Greenhouse Maven"
+		url = 'https://maven.greenhouseteam.dev/releases/'
+	}
+	maven { url "https://mvn.devos.one/releases/" } // Porting Lib
+	maven {
+		url "https://maven.jamieswhiteshirt.com/libs-release" // Reach Entity Attributes (Required by Porting Lib)
+		content {
+			includeGroup "com.jamieswhiteshirt"
+		}
+	}
+	maven {
+		url "https://jitpack.io/" // Fabric ASM
+		content {
+			excludeGroup "io.github.fabricators_of_create"
+		}
+	}
+
+
 }
 
 loom {
@@ -36,13 +56,17 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "curse.maven:farmers-delight-fabric-482834:4939709"
+
+	modImplementation("vectorwing:FarmersDelight:${fdrf_version}") {
+		exclude(group: "net.fabricmc")
+	}
+	//modImplementation "curse.maven:farmers-delight-fabric-482834:4939709"
 	//modImplementation "curse.maven:cake-chomps-307943:4592010"
 
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
-	modApi "com.terraformersmc:modmenu:7.1.0"
+	modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 }

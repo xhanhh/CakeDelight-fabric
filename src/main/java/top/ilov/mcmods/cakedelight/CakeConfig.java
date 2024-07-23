@@ -11,15 +11,33 @@ public final class CakeConfig {
     public CakeConfig() {}
 
     private boolean enable_the_sound_of_eating_ekac = true;
+    private boolean enable_the_sound_of_eating_cakes = true;
+    private boolean enable_experimental_content = false;
 
     public boolean isEnableEkacSound() {
         return enable_the_sound_of_eating_ekac;
+    }
+
+    public boolean isEnable_the_sound_of_eating_cakes() {
+        return enable_the_sound_of_eating_cakes;
+    }
+
+    public boolean isEnable_experimental_contents() {
+        return enable_experimental_content;
     }
 
     public void setEnableEkacSound(boolean nEnableEkacSound) {
 
         enable_the_sound_of_eating_ekac = nEnableEkacSound;
 
+    }
+
+    public void setEnable_the_sound_of_eating_cakes(boolean enable_the_sound_of_eating_cakes) {
+        this.enable_the_sound_of_eating_cakes = enable_the_sound_of_eating_cakes;
+    }
+
+    public void setEnable_experimental_content(boolean enableExperimentalContent) {
+        this.enable_experimental_content = enableExperimentalContent;
     }
 
     static File config = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cakedelight-common.json");
@@ -51,7 +69,7 @@ public final class CakeConfig {
         FileWriter fileWriter;
         try {
             fileWriter = new FileWriter(config);
-            Gson gson = new Gson();
+            Gson gson = new Gson().newBuilder().setPrettyPrinting().create();
             fileWriter.write(gson.toJson(cakeConfig));
             fileWriter.close();
         } catch (IOException e) {

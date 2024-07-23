@@ -26,6 +26,22 @@ public class ClothConfig {
                 .setSaveConsumer(newValue -> CakeDelightMod.CONFIG.setEnableEkacSound(newValue))
                 .build());
 
+        general.addEntry(entryBuilder
+                .startBooleanToggle(Text.translatable("config.cakedelight.enable_eating_cakes_sound"), CakeDelightMod.CONFIG.isEnable_the_sound_of_eating_cakes())
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("config.cakedelight.enable_eating_cakes_sound.tooltip"))
+                .setSaveConsumer(newValue -> CakeDelightMod.CONFIG.setEnable_the_sound_of_eating_cakes(newValue))
+                .build()
+        );
+
+        general.addEntry(entryBuilder
+                .startBooleanToggle(Text.translatable("config.cakedelight.enable_experimental_content"), CakeDelightMod.CONFIG.isEnable_experimental_contents())
+                .setDefaultValue(false)
+                .setTooltip(Text.translatable("config.cakedelight.enable_experimental_content.tooltip"))
+                .setSaveConsumer(newValue -> CakeDelightMod.CONFIG.setEnable_experimental_content(newValue))
+                .requireRestart()
+                .build());
+
         return builder.build();
     }
 

@@ -1,4 +1,4 @@
-package top.ilov.mcmods.cakedelight.blocks;
+package top.ilov.mcmods.cakedelight.blocks.cakes;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

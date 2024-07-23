@@ -11,6 +11,7 @@ import net.minecraft.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
+import top.ilov.mcmods.cakedelight.blocks.ExperimentalBlocksRegistry;
 import top.ilov.mcmods.cakedelight.items.ItemsRegistry;
 import top.ilov.mcmods.cakedelight.sounds.SoundsRegistry;
 
@@ -33,6 +34,10 @@ public class CakeDelightMod implements ModInitializer {
 
 		CONFIG = CakeConfig.loadConfig();
 
+		if (CONFIG.isEnable_experimental_contents()) {
+			ExperimentalBlocksRegistry.registerExperimentalBlocks();
+		}
+
 		if (!FabricLoader.getInstance().isModLoaded("farmersdelight")) {
 
 			LOGGER.error("There's no Farmer's Delight mod found.");
@@ -47,6 +52,8 @@ public class CakeDelightMod implements ModInitializer {
 				.displayName(Text.translatable("cakedelight.name"))
 				.icon(() -> new ItemStack(BlocksRegistry.ekac))
 				.entries((context, entries) -> {
+					entries.add(BlocksRegistry.overworld_cake);
+					entries.add(ExperimentalBlocksRegistry.nether_cake);
 					entries.add(BlocksRegistry.end_cake);
 					entries.add(BlocksRegistry.ekac);
 					entries.add(ItemsRegistry.ekac_slice);

@@ -10,6 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import top.ilov.mcmods.cakedelight.blocks.cakes.*;
 
 import java.util.function.ToIntFunction;
 
@@ -20,6 +21,8 @@ public class BlocksRegistry {
     public static final CakeBlock ekac = registerCakeBlock("ekac", new EkacBlock(FabricBlockSettings.create().hardness(0.5F)
             .sounds(BlockSoundGroup.WOOL)));
     public static final CakeBlock end_cake = registerCakeBlock("end_cake", new EndCakeBlock(FabricBlockSettings.create().hardness(0.5F).sounds(BlockSoundGroup.WOOL)));
+    public static final CakeBlock overworld_cake = registerCakeBlock("overworld_cake", new OverworldCakeBlock(FabricBlockSettings.create().hardness(0.5F)
+            .sounds(BlockSoundGroup.WOOL)));
 
     public static final Block candle_ekac = registerBlock("candle_ekac", new CandleEkacBlock(Blocks.CANDLE, AbstractBlock.Settings.copy(ekac)
             .luminance(BlocksRegistry.createLightLevelFromLitBlockState(3))));

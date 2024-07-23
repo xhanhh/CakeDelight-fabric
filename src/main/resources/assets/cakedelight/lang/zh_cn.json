@@ -33,16 +33,24 @@
   "block.cakedelight.black_candle_ekac": "糕蛋和黑色蜡烛",
 
   "block.cakedelight.end_cake": "末地蛋糕",
+  "block.cakedelight.overworld_cake": "主世界蛋糕",
 
   "tooltip.cakedelight.shift": "§7按住§r §eShift§r §7以浏览更多",
   "tooltip.cakedelight.ekac": "§7上面三个小麦，下面三个牛奶",
+  "tooltip.cakedelight.end_cake": "食用后会将玩家传送至末地",
+
   "msg.cakedelight.cannot_eat_end_cake": "在末地不能食用末地蛋糕",
+  "msg.cakedelight.cannot_eat_overworld_cake": "在主世界不能食用主世界蛋糕",
 
   "config.cakedelight.title": "蛋糕乐事 - 设置",
   "config.cakedelight.general": "通用",
   "config.cakedelight.enable_eating_ekac_sound": "启用食用糕蛋时的音效",
   "config.cakedelight.enable_eating_ekac_sound.tooltip": "该音效相比原版的蛋糕是倒放的。",
+  "config.cakedelight.enable_eating_cakes_sound": "启用食用本模组蛋糕时的音效",
+  "config.cakedelight.enable_eating_cakes_sound.tooltip": "启用食用本模组蛋糕时的音效，为原版风格。",
+  "config.cakedelight.enable_experimental_content": "启用实验性内容（开发模式）",
+  "config.cakedelight.enable_experimental_content.tooltip": "这些内容未经测试，可能会有很严重的Bug：包括但不限于游戏崩溃、存档损坏。仅供开发使用，请勿开启该选项。",
 
   "modmenu.nameTranslation.cakedelight": "蛋糕乐事",
-  "modmenu.descriptionTranslation.cakedelight": "各种有趣的食物~"
+  "modmenu.descriptionTranslation.cakedelight": "添加了一些有用的蛋糕、联动与各种有趣的食物~"
 }

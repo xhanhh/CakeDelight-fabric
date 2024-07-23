@@ -33,16 +33,24 @@
   "block.cakedelight.black_candle_ekac": "Upside down Cake with Black Candle",
 
   "block.cakedelight.end_cake": "End Cake",
+  "block.cakedelight.overworld_cake": "Overworld Cake",
 
   "tooltip.cakedelight.shift": "§7Hold§r §eShift",
   "tooltip.cakedelight.ekac": "§7It's a meme called ekaC when someone puts the cake recipe upside down",
+  "tooltip.cakedelight.end_cake": "When eaten it will transport you to the end.",
+
   "msg.cakedelight.cannot_eat_end_cake": "You can't eat End Cake at the end",
+  "msg.cakedelight.cannot_eat_overworld_cake": "You can't eat Overworld Cake at the overworld",
 
   "config.cakedelight.title": "Cake Delight settings",
   "config.cakedelight.general": "General",
   "config.cakedelight.enable_eating_ekac_sound": "Enable the sound of eating Upside down Cake(ekaC)",
   "config.cakedelight.enable_eating_ekac_sound.tooltip": "Compared to vanilla cake, the sound is inverted.",
+  "config.cakedelight.enable_eating_cakes_sound": "Enable sound when eating cakes from this mod.",
+  "config.cakedelight.enable_eating_cakes_sound.tooltip": "Enable sound when eating cakes from this mod.",
+  "config.cakedelight.enable_experimental_content": "Enable Experimental Content (Development mode)",
+  "config.cakedelight.enable_experimental_content.tooltip": "These contents have not been tested, there may be serious bugs, only for testing use, do not open privately.",
 
   "modmenu.nameTranslation.cakedelight": "Cake Delight",
-  "modmenu.descriptionTranslation.cakedelight": "Some interesting food ~"
+  "modmenu.descriptionTranslation.cakedelight": "Added some useful cakes, linkage with a variety of interesting food ~"
 }
