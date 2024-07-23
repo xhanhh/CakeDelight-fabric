@@ -30,7 +30,8 @@ public class OverworldCakeBlock extends CakePortalBase {
 
         if (world instanceof ServerWorld && !player.isSpectator() && itemStack.isEmpty()) {
 
-            if (player.getWorld().getDimensionKey() != DimensionTypes.OVERWORLD) {
+            if (player.getWorld().getDimensionKey() != DimensionTypes.OVERWORLD && player.getWorld().getDimensionKey() != DimensionTypes.THE_NETHER) {
+
 
                 RegistryKey<World> registryKey = World.OVERWORLD;
                 ServerWorld serverWorld = ((ServerWorld)world).getServer().getWorld(registryKey);
@@ -40,10 +41,20 @@ public class OverworldCakeBlock extends CakePortalBase {
                 }
                 tryEat(world, pos, state, player);
 
-                player.moveToWorld(serverWorld);
+                PlayerEntity teleportedPlayer = (PlayerEntity) player.moveToWorld(serverWorld);
+                if (teleportedPlayer != null) {
+                    teleportedPlayer.refreshPositionAfterTeleport(serverWorld.getSpawnPos().getX() + 1, serverWorld.getSpawnPos().getY(), serverWorld.getSpawnPos().getZ());
+                }
                 return ActionResult.SUCCESS;
+
+
             } else {
-                player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake"),true);
+                if (player.getWorld().getDimensionKey() == DimensionTypes.OVERWORLD) {
+                    player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake"),true);
+                }
+                if (player.getWorld().getDimensionKey() == DimensionTypes.THE_NETHER) {
+                    player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake_at_nether"),true);
+                }
             }
 
         }

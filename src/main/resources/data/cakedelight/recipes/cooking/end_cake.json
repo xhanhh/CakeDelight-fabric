@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:ender_eye"
+    },
+    {
+      "item": "minecraft:soul_sand"
+    },
+    {
+      "tag": "c:cream"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "cakedelight:end_cake"
+  },
+  "container": {
+    "item": "cakedelight:cake_base"
+  },
+  "cookingtime": 180
+}

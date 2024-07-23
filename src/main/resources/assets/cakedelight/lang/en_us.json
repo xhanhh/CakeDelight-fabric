@@ -37,10 +37,11 @@
 
   "tooltip.cakedelight.shift": "§7Hold§r §eShift",
   "tooltip.cakedelight.ekac": "§7It's a meme called ekaC when someone puts the cake recipe upside down",
-  "tooltip.cakedelight.end_cake": "When eaten it will transport you to the end.",
+  "tooltip.cakedelight.end_cake": "§7When eaten it will transport you to the end, an Overworld Cake will then be generated at the end.",
 
   "msg.cakedelight.cannot_eat_end_cake": "You can't eat End Cake at the end",
   "msg.cakedelight.cannot_eat_overworld_cake": "You can't eat Overworld Cake at the overworld",
+  "msg.cakedelight.cannot_eat_overworld_cake_at_nether": "Overworld Cake is not currently available in The Nether",
 
   "config.cakedelight.title": "Cake Delight settings",
   "config.cakedelight.general": "General",

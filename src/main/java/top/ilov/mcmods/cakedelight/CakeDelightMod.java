@@ -50,10 +50,12 @@ public class CakeDelightMod implements ModInitializer {
 
 		Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
 				.displayName(Text.translatable("cakedelight.name"))
-				.icon(() -> new ItemStack(BlocksRegistry.ekac))
+				.icon(() -> new ItemStack(BlocksRegistry.end_cake))
 				.entries((context, entries) -> {
 					entries.add(BlocksRegistry.overworld_cake);
-					entries.add(ExperimentalBlocksRegistry.nether_cake);
+					if (CONFIG.isEnable_experimental_contents()) {
+						entries.add(ExperimentalBlocksRegistry.nether_cake);
+					}
 					entries.add(BlocksRegistry.end_cake);
 					entries.add(BlocksRegistry.ekac);
 					entries.add(ItemsRegistry.ekac_slice);

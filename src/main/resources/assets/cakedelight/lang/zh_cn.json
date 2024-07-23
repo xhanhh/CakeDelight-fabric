@@ -37,10 +37,11 @@
 
   "tooltip.cakedelight.shift": "§7按住§r §eShift§r §7以浏览更多",
   "tooltip.cakedelight.ekac": "§7上面三个小麦，下面三个牛奶",
-  "tooltip.cakedelight.end_cake": "食用后会将玩家传送至末地",
+  "tooltip.cakedelight.end_cake": "§7食用后会将玩家传送至末地，在出生点区域会生成主世界蛋糕以供返回。",
 
   "msg.cakedelight.cannot_eat_end_cake": "在末地不能食用末地蛋糕",
   "msg.cakedelight.cannot_eat_overworld_cake": "在主世界不能食用主世界蛋糕",
+  "msg.cakedelight.cannot_eat_overworld_cake_at_nether": "主世界蛋糕在下界目前不支持使用",
 
   "config.cakedelight.title": "蛋糕乐事 - 设置",
   "config.cakedelight.general": "通用",
