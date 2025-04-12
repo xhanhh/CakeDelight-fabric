@@ -52,6 +52,6 @@
   "config.cakedelight.enable_experimental_content": "启用实验性内容（开发模式）",
   "config.cakedelight.enable_experimental_content.tooltip": "这些内容未经测试，可能会有很严重的Bug：包括但不限于游戏崩溃、存档损坏。仅供开发使用，请勿开启该选项。",
 
-  "modmenu.nameTranslation.cakedelight": "蛋糕乐事",
+  "modmenu.nameTranslation.cakedelight": "Cake Delight",
   "modmenu.descriptionTranslation.cakedelight": "添加了一些有用的蛋糕、联动与各种有趣的食物~"
 }

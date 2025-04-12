@@ -1,28 +1,13 @@
 {
-  "type": "minecraft:crafting_shaped",
-
-  "pattern":
-  [
-    "   ",
-    " C ",
-    "AAA"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "minecraft:wheat", "data": 0},
+    {"item": "minecraft:wheat", "data": 0},
+    {"item": "minecraft:egg", "data": 0}
   ],
 
-  "key":
-  {
-    "A":
-    {
-      "item": "minecraft:wheat"
-    },
-    "C":
-    {
-      "item": "minecraft:egg"
-    }
-  },
-
-  "result":
-  {
+  "result": {
     "item": "cakedelight:cake_base",
-    "count": 3
+    "count": 2
   }
 }
