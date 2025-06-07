@@ -18,6 +18,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -42,18 +43,6 @@ public class EkacBlock extends CakeBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(Hand.MAIN_HAND);
-        Block block;
-        Item item = itemStack.getItem();
-        if (itemStack.isIn(ItemTags.CANDLES) && state.get(BITES) == 0 && (block = Block.getBlockFromItem(item)) instanceof CandleBlock) {
-            if (!player.isCreative()) {
-                itemStack.decrement(1);
-            }
-            world.playSound(null, pos, SoundEvents.BLOCK_CAKE_ADD_CANDLE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-            world.setBlockState(pos, CandleEkacBlock.getCandleCakeFromCandle(block));
-            world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-            player.incrementStat(Stats.USED.getOrCreateStat(item));
-            return ActionResult.SUCCESS;
-        }
 
         if (world.isClient) {
             if (tryEat(world, pos, state, player).isAccepted()) {
@@ -66,6 +55,27 @@ public class EkacBlock extends CakeBlock {
         }
 
         return tryEat(world, pos, state, player);
+    }
+
+    @Override
+    public ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player,
+                                          Hand hand, BlockHitResult hit) {
+        Item item = stack.getItem();
+        Block itemBlock = Block.getBlockFromItem(item);
+        if (stack.isIn(ItemTags.CANDLES) && state.get(BITES) == 0 && itemBlock instanceof CandleBlock) {
+            if (!player.isCreative()) {
+                stack.decrement(1);
+            }
+            world.playSound(null, pos, SoundEvents.BLOCK_CAKE_ADD_CANDLE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.setBlockState(pos, CandleEkacBlock.getCandleCakeFromCandle(itemBlock));
+            world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            player.incrementStat(Stats.USED.getOrCreateStat(item));
+
+            return ItemActionResult.SUCCESS;
+        }
+
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+
     }
 
     protected static ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {

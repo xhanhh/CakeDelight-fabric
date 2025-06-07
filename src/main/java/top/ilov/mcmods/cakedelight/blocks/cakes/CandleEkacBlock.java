@@ -16,6 +16,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -30,6 +31,7 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class CandleEkacBlock extends AbstractCandleBlock {
@@ -58,26 +60,29 @@ public class CandleEkacBlock extends AbstractCandleBlock {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(Hand.MAIN_HAND);
-        if (itemStack.isOf(Items.FLINT_AND_STEEL) || itemStack.isOf(Items.FIRE_CHARGE)) {
-
-                this.playUseSound(world, pos);
-                world.setBlockState(pos, state.with(Properties.LIT, true));
-                world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-
-                return ActionResult.success(world.isClient);
-
-        }
-        if (!(CandleEkacBlock.isHittingCandle(hit) && player.getStackInHand(Hand.MAIN_HAND).isEmpty() && state.get(LIT))) {
-            ActionResult actionResult = EkacBlock.tryEat(world, pos, BlocksRegistry.ekac.getDefaultState(), player);
-            if (actionResult.isAccepted()) {
-                CandleEkacBlock.dropStacks(state, world, pos);
+    public ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (!stack.isOf(Items.FLINT_AND_STEEL) && !stack.isOf(Items.FIRE_CHARGE)) {
+            if (isHittingCandle(hit) && stack.isEmpty() && state.get(LIT)) {
+                extinguish(player, state, world, pos);
+                return ItemActionResult.success(world.isClient);
+            } else {
+                return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
             }
-            return actionResult;
+        } else {
+            this.playUseSound(world, pos);
+            world.setBlockState(pos, state.with(Properties.LIT, true));
+            world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
         }
-        CandleEkacBlock.extinguish(player, state, world, pos);
-        return ActionResult.success(world.isClient);
+    }
+
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        ActionResult actionResult = EkacBlock.tryEat(world, pos, BlocksRegistry.ekac.getDefaultState(), player);
+        if (actionResult.isAccepted()) {
+            dropStacks(state, world, pos);
+        }
+
+        return actionResult;
     }
 
     private void playUseSound(World world, BlockPos pos) {
