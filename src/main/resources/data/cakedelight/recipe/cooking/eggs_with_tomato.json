@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:crops/tomato"
+    },
+    {
+      "tag": "c:eggs"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 1,
+    "id": "cakedelight:eggs_with_tomato"
+  },
+  "container": {
+    "count": 1,
+    "id": "minecraft:bowl"
+  },
+  "experience": 0.2,
+  "cookingtime": 150
+}

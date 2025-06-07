@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:mushrooms"
+    },
+    {
+      "tag": "c:cream"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 1,
+    "id": "cakedelight:cream_of_mushroom_soup"
+  },
+  "container": {
+    "count": 1,
+    "id": "minecraft:bowl"
+  },
+  "experience": 0.2,
+  "cookingtime": 180
+}

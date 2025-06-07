@@ -1,0 +1,18 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:cream"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 1,
+    "id": "cakedelight:ekac"
+  },
+  "container": {
+    "id": "cakedelight:ekac_hat"
+  },
+  "experience": 0.2,
+  "cookingtime": 170
+}

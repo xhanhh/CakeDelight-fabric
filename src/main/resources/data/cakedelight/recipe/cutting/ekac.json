@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "cakedelight:ekac"
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  },
+  "result": [
+    {
+      "item": {
+        "count": 7,
+        "id": "cakedelight:ekac_slice"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    "   ",
+    "A A",
+    " A "
+  ],
+
+  "key":
+  {
+    "A":
+    {
+      "item": "minecraft:clay_ball"
+    }
+  },
+
+  "result":
+  {
+    "id": "cakedelight:unfired_porcelain_bowl",
+    "count": 4
+  }
+}

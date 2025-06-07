@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:milks"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 1,
+    "id": "cakedelight:cream"
+  },
+  "container": {
+    "count": 1,
+    "id": "cakedelight:porcelain_bowl"
+  },
+  "cookingtime": 160
+}

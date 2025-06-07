@@ -1,0 +1,24 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "c:crops/tomato"
+    },
+    {
+      "tag": "c:pasta"
+    },
+    {
+      "tag": "c:cooked_eggs"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 1,
+    "id": "cakedelight:tomato_egg_noodle_soup"
+  },
+  "container": {
+    "count": 1,
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 190
+}
