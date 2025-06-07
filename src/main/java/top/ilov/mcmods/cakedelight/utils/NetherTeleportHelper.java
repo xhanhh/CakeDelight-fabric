@@ -1,8 +1,11 @@
 package top.ilov.mcmods.cakedelight.utils;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 
@@ -46,6 +49,86 @@ public class NetherTeleportHelper {
             }
         }
         return false;
+    }
+
+    public static boolean hasExistingTorch(ServerWorld world, BlockPos center) {
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 2; dy++) {
+                for (int dz = -1; dz <= 1; dz++) {
+                    BlockPos check = center.add(dx, dy, dz);
+                    if (world.getBlockState(check).isOf(Blocks.TORCH)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void checkPlatformAndPlaceCake(ServerWorld world, BlockPos spawnPos, Direction facing) {
+        BlockPos cakePos = spawnPos.offset(facing);
+        BlockPos groundCenter = cakePos.down();
+
+        if (hasExistingOverworldCake(world, cakePos, 3)) {
+            return;
+        }
+
+        boolean needPlatform = false;
+
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dz = -1; dz <= 1; dz++) {
+                BlockPos check = groundCenter.add(dx, 0, dz);
+                if (world.isAir(check)) {
+                    needPlatform = true;
+                    break;
+                }
+            }
+            if (needPlatform) break;
+        }
+
+        if (needPlatform) {
+            for (int dx = -1; dx <= 1; dx++) {
+                for (int dz = -1; dz <= 1; dz++) {
+                    BlockPos pos = groundCenter.add(dx, 0, dz);
+                    world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
+                }
+            }
+        }
+
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = 1; dy <= 3; dy++) {
+                for (int dz = -1; dz <= 1; dz++) {
+                    BlockPos pos = groundCenter.add(dx, dy, dz);
+                    if (!world.isAir(pos)) {
+                        world.breakBlock(pos, false);
+                    }
+                }
+            }
+        }
+
+        if (world.isAir(cakePos)) {
+            world.setBlockState(cakePos, BlocksRegistry.overworld_cake.getDefaultState());
+        }
+
+        if (!hasExistingTorch(world, cakePos)) {
+            BlockPos torchPos = findTorchPosition(world, cakePos);
+            if (torchPos != null) {
+                world.setBlockState(torchPos, Blocks.TORCH.getDefaultState());
+            }
+        }
+
+    }
+
+    @Nullable
+    private static BlockPos findTorchPosition(ServerWorld world, BlockPos facing) {
+        for (Direction dir : Direction.Type.HORIZONTAL) {
+            BlockPos candidate = facing.offset(dir);
+            BlockPos below = candidate.down();
+            if (world.getBlockState(candidate).isAir() && world.getBlockState(below).isSolidBlock(world, below)) {
+                return candidate;
+            }
+        }
+        return null;
     }
 
 }

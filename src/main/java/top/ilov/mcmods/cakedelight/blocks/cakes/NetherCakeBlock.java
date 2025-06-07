@@ -22,7 +22,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.EndPlatformFeature;
-import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
 import top.ilov.mcmods.cakedelight.utils.NetherTeleportHelper;
 
@@ -68,13 +67,7 @@ public class NetherCakeBlock extends CakePortalBase {
                     teleportedPlayer.refreshPositionAfterTeleport(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
                 }
 
-                BlockPos cakePos = spawnPos.offset(player.getHorizontalFacing());
-                while (nether.isAir(cakePos.down())) {
-                    cakePos = cakePos.down();
-                }
-                if (nether.isAir(cakePos) && !NetherTeleportHelper.hasExistingOverworldCake(nether, cakePos, 3)) {
-                    nether.setBlockState(cakePos, BlocksRegistry.overworld_cake.getDefaultState());
-                }
+                NetherTeleportHelper.checkPlatformAndPlaceCake(nether, spawnPos, player.getHorizontalFacing());
 
                 return tryEat(world, pos, state, player);
 
