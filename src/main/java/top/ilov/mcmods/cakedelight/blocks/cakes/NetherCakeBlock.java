@@ -20,7 +20,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionTypes;
 import net.minecraft.world.gen.feature.EndPlatformFeature;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
@@ -42,7 +41,7 @@ public class NetherCakeBlock extends CakePortalBase {
 
         if (world instanceof ServerWorld && !player.isSpectator() && itemStack.isEmpty() && !player.hasVehicle()) {
 
-            if (player.getWorld().getDimensionEntry() != DimensionTypes.THE_NETHER) {
+            if (player.getWorld().getRegistryKey() != World.NETHER) {
 
                 ServerWorld nether = world.getServer().getWorld(World.NETHER);
                 if (nether == null) {
@@ -78,7 +77,6 @@ public class NetherCakeBlock extends CakePortalBase {
 
             } else {
                 player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_nether_cake"),true);
-                return ActionResult.FAIL;
             }
 
         }
@@ -91,12 +89,16 @@ public class NetherCakeBlock extends CakePortalBase {
         }
 
         if (world.isClient && itemStack.isEmpty()) {
+            if (tryEat(world, pos, state, player).isAccepted()) {
+                return ActionResult.SUCCESS;
+            }
 
-            return ActionResult.CONSUME;
-
+            if (itemStack.isEmpty()) {
+                return ActionResult.CONSUME;
+            }
         }
 
-        return tryEat(world, pos, state, player);
+        return ActionResult.PASS;
 
     }
 

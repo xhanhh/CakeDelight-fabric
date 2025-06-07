@@ -14,11 +14,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionTypes;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
 
 public class OverworldCakeBlock extends CakePortalBase {
@@ -34,7 +32,7 @@ public class OverworldCakeBlock extends CakePortalBase {
 
         if (world instanceof ServerWorld && !player.isSpectator() && itemStack.isEmpty()) {
 
-            if (player.getWorld().getDimensionEntry() != DimensionTypes.OVERWORLD && player.getWorld().getDimensionEntry() != DimensionTypes.THE_NETHER) {
+            if (player.getWorld().getRegistryKey() != World.OVERWORLD) {
 
                 RegistryKey<World> registryKey = World.OVERWORLD;
                 ServerWorld serverWorld = ((ServerWorld)world).getServer().getWorld(registryKey);
@@ -66,12 +64,7 @@ public class OverworldCakeBlock extends CakePortalBase {
 
 
             } else {
-                if (player.getWorld().getDimensionEntry() == DimensionTypes.OVERWORLD) {
-                    player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake"),true);
-                }
-                if (player.getWorld().getDimensionEntry() == DimensionTypes.THE_NETHER) {
-                    player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake_at_nether"),true);
-                }
+                player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake"),true);
             }
 
         }
