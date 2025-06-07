@@ -1,5 +1,5 @@
 {
-  "cakedelight.name": "蛋糕乐事",
+  "cakedelight.name": "Cake Delight",
   "block.cakedelight.ekac": "糕蛋",
   "item.cakedelight.ekac_hat": "糕蛋帽",
   "item.cakedelight.small_ekac": "小糕蛋",
@@ -34,14 +34,16 @@
 
   "block.cakedelight.end_cake": "末地蛋糕",
   "block.cakedelight.overworld_cake": "主世界蛋糕",
+  "block.cakedelight.nether_cake": "下界蛋糕",
 
   "tooltip.cakedelight.shift": "§7按住§r §eShift§r §7以浏览更多",
   "tooltip.cakedelight.ekac": "§7上面三个小麦，下面三个牛奶",
   "tooltip.cakedelight.end_cake": "§7食用后会将玩家传送至末地，在出生点区域会生成主世界蛋糕以供返回。",
+  "tooltip.cakedelight.nether_cake": "§7食用后会将玩家传送至下界，在出生点区域会生成主世界蛋糕以供返回。",
 
   "msg.cakedelight.cannot_eat_end_cake": "在末地不能食用末地蛋糕",
   "msg.cakedelight.cannot_eat_overworld_cake": "在主世界不能食用主世界蛋糕",
-  "msg.cakedelight.cannot_eat_overworld_cake_at_nether": "主世界蛋糕在下界目前不支持使用",
+  "msg.cakedelight.cannot_eat_nether_cake": "在下界不能食用下界蛋糕",
 
   "config.cakedelight.title": "蛋糕乐事 - 设置",
   "config.cakedelight.general": "通用",
@@ -52,6 +54,6 @@
   "config.cakedelight.enable_experimental_content": "启用实验性内容（开发模式）",
   "config.cakedelight.enable_experimental_content.tooltip": "这些内容未经测试，可能会有很严重的Bug：包括但不限于游戏崩溃、存档损坏。仅供开发使用，请勿开启该选项。",
 
-  "modmenu.nameTranslation.cakedelight": "蛋糕乐事",
-  "modmenu.descriptionTranslation.cakedelight": "添加了一些有用的蛋糕、联动与各种有趣的食物~"
+  "modmenu.nameTranslation.cakedelight": "Cake Delight",
+  "modmenu.descriptionTranslation.cakedelight": "添加了用于在三个维度中往返的传送蛋糕、以及其它有趣的食物及联动。"
 }

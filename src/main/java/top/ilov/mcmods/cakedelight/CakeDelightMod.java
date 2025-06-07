@@ -44,7 +44,7 @@ public class CakeDelightMod implements ModInitializer {
 
 		} else {
 
-			LOGGER.info("Loading CakeDelight mod.");
+			LOGGER.info("Hello Cake!");
 
 		}
 
@@ -53,9 +53,7 @@ public class CakeDelightMod implements ModInitializer {
 				.icon(() -> new ItemStack(BlocksRegistry.end_cake))
 				.entries((context, entries) -> {
 					entries.add(BlocksRegistry.overworld_cake);
-					if (CONFIG.isEnable_experimental_contents()) {
-						entries.add(ExperimentalBlocksRegistry.nether_cake);
-					}
+					entries.add(BlocksRegistry.nether_cake);
 					entries.add(BlocksRegistry.end_cake);
 					entries.add(BlocksRegistry.ekac);
 					entries.add(ItemsRegistry.ekac_slice);
@@ -70,6 +68,9 @@ public class CakeDelightMod implements ModInitializer {
 					entries.add(ItemsRegistry.cream_of_mushroom_soup);
 					entries.add(ItemsRegistry.tomatoes_with_tomatoes);
 					entries.add(ItemsRegistry.stewed_beef_with_tomato);
+					if (CONFIG.isEnable_experimental_contents()) {
+
+					}
 				})
 				.build()
 		);

@@ -1,10 +1,14 @@
 package top.ilov.mcmods.cakedelight.blocks.cakes;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
@@ -13,10 +17,16 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionTypes;
+import net.minecraft.world.gen.feature.EndPlatformFeature;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
+import top.ilov.mcmods.cakedelight.utils.NetherTeleportHelper;
+
+import java.util.List;
 
 public class NetherCakeBlock extends CakePortalBase {
 
@@ -34,16 +44,36 @@ public class NetherCakeBlock extends CakePortalBase {
 
             if (player.getWorld().getDimensionEntry() != DimensionTypes.THE_NETHER) {
 
-                ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+                ServerWorld nether = world.getServer().getWorld(World.NETHER);
+                if (nether == null) {
+                    return ActionResult.FAIL;
+                }
 
-                player.getWorld().getProfiler().push("portal");
-                player.requestTeleportAndDismount(player.getX(), player.getY(), player.getZ());
-                //player.moveToWorld(((ServerWorld) world).getServer().getWorld(World.NETHER));
+                BlockPos spawnPos = NetherTeleportHelper.findSafeNetherSpawn(nether, player);
+                if (spawnPos == null) {
+                    spawnPos = new BlockPos(0, 70, 0);
+                    EndPlatformFeature.generate(nether, spawnPos.down(), true);
+                }
 
-                player.getWorld().getProfiler().pop();
+                Vec3d targetPos = spawnPos.toCenterPos();
+                float yaw = player.getYaw();
+                float pitch = player.getPitch();
 
-                if (state.get(BITES) == 0) {
-                    player.setStackInHand(Hand.MAIN_HAND, new ItemStack(BlocksRegistry.overworld_cake));
+                TeleportTarget target = new TeleportTarget(nether, targetPos, player.getVelocity(), yaw, pitch,
+                        TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(TeleportTarget.ADD_PORTAL_CHUNK_TICKET)
+                );
+
+                PlayerEntity teleportedPlayer = (PlayerEntity) player.teleportTo(target);
+                if (teleportedPlayer != null) {
+                    teleportedPlayer.refreshPositionAfterTeleport(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                }
+
+                BlockPos cakePos = spawnPos.offset(player.getHorizontalFacing());
+                while (nether.isAir(cakePos.down())) {
+                    cakePos = cakePos.down();
+                }
+                if (nether.isAir(cakePos) && !NetherTeleportHelper.hasExistingOverworldCake(nether, cakePos, 3)) {
+                    nether.setBlockState(cakePos, BlocksRegistry.overworld_cake.getDefaultState());
                 }
 
             } else {
@@ -67,6 +97,18 @@ public class NetherCakeBlock extends CakePortalBase {
         }
 
         return tryEat(world, pos, state, player);
+
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.translatable("tooltip.cakedelight.nether_cake"));
+        } else {
+            tooltip.add(Text.translatable("tooltip.cakedelight.shift"));
+        }
 
     }
 }
