@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 1,
+    "id": "cakedelight:nether_cake"
+  },
+  "container": {
+    "count": 1,
+    "id": "cakedelight:cake_base"
+  },
+  "cookingtime": 180
+}
