@@ -15,6 +15,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -75,16 +76,11 @@ public class NetherCakeBlock extends CakePortalBase {
                     nether.setBlockState(cakePos, BlocksRegistry.overworld_cake.getDefaultState());
                 }
 
+                return tryEat(world, pos, state, player);
+
             } else {
                 player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_nether_cake"),true);
             }
-
-        }
-
-        if (itemStack.getItem() == Items.OBSIDIAN && state.get(BITES) > 0 && !world.isClient) {
-
-            world.setBlockState(pos, state.with(BITES, state.get(BITES) - 1));
-            itemStack.decrement(1);
 
         }
 
@@ -100,6 +96,19 @@ public class NetherCakeBlock extends CakePortalBase {
 
         return ActionResult.PASS;
 
+    }
+
+    @Override
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
+                                             PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (stack.getItem() == Items.OBSIDIAN && state.get(BITES) > 0 && !world.isClient) {
+
+            world.setBlockState(pos, state.with(BITES, state.get(BITES) - 1));
+            stack.decrement(1);
+
+            return ItemActionResult.SUCCESS;
+        }
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Environment(EnvType.CLIENT)

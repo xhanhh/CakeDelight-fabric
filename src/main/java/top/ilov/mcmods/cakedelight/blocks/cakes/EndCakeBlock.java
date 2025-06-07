@@ -16,6 +16,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -88,13 +89,6 @@ public class EndCakeBlock extends CakePortalBase {
 
         }
 
-        if (itemStack.getItem() == Items.ENDER_EYE && state.get(BITES) > 0 && !world.isClient) {
-
-            world.setBlockState(pos, state.with(BITES, state.get(BITES) - 1));
-            itemStack.decrement(1);
-
-        }
-
         if (world.isClient && itemStack.isEmpty()) {
             if (tryEat(world, pos, state, player).isAccepted()) {
                 return ActionResult.SUCCESS;
@@ -106,6 +100,19 @@ public class EndCakeBlock extends CakePortalBase {
         }
 
         return ActionResult.PASS;
+    }
+
+    @Override
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
+                                             PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (stack.getItem() == Items.ENDER_EYE && state.get(BITES) > 0 && !world.isClient) {
+
+            world.setBlockState(pos, state.with(BITES, state.get(BITES) - 1));
+            stack.decrement(1);
+            return ItemActionResult.SUCCESS;
+
+        }
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Environment(EnvType.CLIENT)
