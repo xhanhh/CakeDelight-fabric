@@ -13,7 +13,7 @@ public class SoundsRegistry {
 
     public static SoundEvent registerSound(String string) {
 
-        return Registry.register(Registries.SOUND_EVENT, new Identifier(MOD_ID, string), SoundEvent.of(new Identifier(MOD_ID, string)));
+        return Registry.register(Registries.SOUND_EVENT,Identifier.of(MOD_ID, string), SoundEvent.of(Identifier.of(MOD_ID, string)));
 
     }
 

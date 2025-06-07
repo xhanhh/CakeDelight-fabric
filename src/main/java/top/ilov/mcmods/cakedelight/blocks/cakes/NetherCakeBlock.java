@@ -27,23 +27,23 @@ public class NetherCakeBlock extends CakePortalBase {
     public static final IntProperty BITES = Properties.BITES;
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(hand);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(Hand.MAIN_HAND);
 
-        if (world instanceof ServerWorld && !player.isSpectator() && itemStack.isEmpty() && player.canUsePortals() && !player.hasVehicle()) {
+        if (world instanceof ServerWorld && !player.isSpectator() && itemStack.isEmpty() && !player.hasVehicle()) {
 
-            if (player.getWorld().getDimensionKey() != DimensionTypes.THE_NETHER) {
+            if (player.getWorld().getDimensionEntry() != DimensionTypes.THE_NETHER) {
 
                 ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
 
                 player.getWorld().getProfiler().push("portal");
                 player.requestTeleportAndDismount(player.getX(), player.getY(), player.getZ());
-                player.moveToWorld(((ServerWorld) world).getServer().getWorld(World.NETHER));
+                //player.moveToWorld(((ServerWorld) world).getServer().getWorld(World.NETHER));
 
                 player.getWorld().getProfiler().pop();
 
                 if (state.get(BITES) == 0) {
-                    player.setStackInHand(hand, new ItemStack(BlocksRegistry.overworld_cake));
+                    player.setStackInHand(Hand.MAIN_HAND, new ItemStack(BlocksRegistry.overworld_cake));
                 }
 
             } else {

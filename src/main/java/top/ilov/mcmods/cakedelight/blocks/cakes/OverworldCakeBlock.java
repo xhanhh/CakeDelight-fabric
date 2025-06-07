@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
@@ -13,6 +14,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionTypes;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
@@ -25,13 +29,12 @@ public class OverworldCakeBlock extends CakePortalBase {
     public static final IntProperty BITES = Properties.BITES;
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(hand);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(Hand.MAIN_HAND);
 
         if (world instanceof ServerWorld && !player.isSpectator() && itemStack.isEmpty()) {
 
-            if (player.getWorld().getDimensionKey() != DimensionTypes.OVERWORLD && player.getWorld().getDimensionKey() != DimensionTypes.THE_NETHER) {
-
+            if (player.getWorld().getDimensionEntry() != DimensionTypes.OVERWORLD && player.getWorld().getDimensionEntry() != DimensionTypes.THE_NETHER) {
 
                 RegistryKey<World> registryKey = World.OVERWORLD;
                 ServerWorld serverWorld = ((ServerWorld)world).getServer().getWorld(registryKey);
@@ -39,9 +42,23 @@ public class OverworldCakeBlock extends CakePortalBase {
                 if (serverWorld == null) {
                     return ActionResult.FAIL;
                 }
+
+                BlockPos blockPos = serverWorld.getSpawnPos();
+                Vec3d vec3d = player.getWorldSpawnPos(serverWorld, blockPos).toBottomCenterPos();
+                float f = player.getYaw();
+
                 tryEat(world, pos, state, player);
 
-                PlayerEntity teleportedPlayer = (PlayerEntity) player.moveToWorld(serverWorld);
+                TeleportTarget teleportTarget;
+                if (player instanceof ServerPlayerEntity serverPlayerEntity) {
+                    teleportTarget = serverPlayerEntity.getRespawnTarget(false, TeleportTarget.NO_OP);
+                } else {
+                    teleportTarget = new TeleportTarget(serverWorld, vec3d, player.getVelocity(), f, player.getPitch(),
+                            TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(TeleportTarget.ADD_PORTAL_CHUNK_TICKET));
+                }
+
+                PlayerEntity teleportedPlayer = (PlayerEntity) player.teleportTo(teleportTarget);
+
                 if (teleportedPlayer != null) {
                     teleportedPlayer.refreshPositionAfterTeleport(serverWorld.getSpawnPos().getX() + 1, serverWorld.getSpawnPos().getY(), serverWorld.getSpawnPos().getZ());
                 }
@@ -49,10 +66,10 @@ public class OverworldCakeBlock extends CakePortalBase {
 
 
             } else {
-                if (player.getWorld().getDimensionKey() == DimensionTypes.OVERWORLD) {
+                if (player.getWorld().getDimensionEntry() == DimensionTypes.OVERWORLD) {
                     player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake"),true);
                 }
-                if (player.getWorld().getDimensionKey() == DimensionTypes.THE_NETHER) {
+                if (player.getWorld().getDimensionEntry() == DimensionTypes.THE_NETHER) {
                     player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake_at_nether"),true);
                 }
             }
@@ -63,7 +80,7 @@ public class OverworldCakeBlock extends CakePortalBase {
 
             world.setBlockState(pos, state.with(BITES, state.get(BITES) - 1));
             itemStack.decrement(1);
-            player.setStackInHand(hand, new ItemStack(Items.BUCKET));
+            player.setStackInHand(Hand.MAIN_HAND, new ItemStack(Items.BUCKET));
 
         }
 

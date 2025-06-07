@@ -2,10 +2,13 @@ package top.ilov.mcmods.cakedelight.blocks.cakes;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -23,12 +26,21 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 
 import java.util.Map;
 
 public class CandleEkacBlock extends AbstractCandleBlock {
+
+    public static final MapCodec<CandleEkacBlock> CODEC = RecordCodecBuilder.mapCodec((instance) ->
+            instance.group(Registries.BLOCK.getCodec().fieldOf("candle").forGetter((block) ->
+                    Blocks.CANDLE), createSettingsCodec()).apply(instance, CandleEkacBlock::new));
+
+    public MapCodec<CandleEkacBlock> getCodec() {
+        return CODEC;
+    }
 
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
 
@@ -46,8 +58,8 @@ public class CandleEkacBlock extends AbstractCandleBlock {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(hand);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(Hand.MAIN_HAND);
         if (itemStack.isOf(Items.FLINT_AND_STEEL) || itemStack.isOf(Items.FIRE_CHARGE)) {
 
                 this.playUseSound(world, pos);
@@ -57,7 +69,7 @@ public class CandleEkacBlock extends AbstractCandleBlock {
                 return ActionResult.success(world.isClient);
 
         }
-        if (!(CandleEkacBlock.isHittingCandle(hit) && player.getStackInHand(hand).isEmpty() && state.get(LIT))) {
+        if (!(CandleEkacBlock.isHittingCandle(hit) && player.getStackInHand(Hand.MAIN_HAND).isEmpty() && state.get(LIT))) {
             ActionResult actionResult = EkacBlock.tryEat(world, pos, BlocksRegistry.ekac.getDefaultState(), player);
             if (actionResult.isAccepted()) {
                 CandleEkacBlock.dropStacks(state, world, pos);
@@ -82,8 +94,9 @@ public class CandleEkacBlock extends AbstractCandleBlock {
     protected Iterable<Vec3d> getParticleOffsets(BlockState state) {
         return PARTICLE_OFFSETS;
     }
+
     @Override
-    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+    public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
         return new ItemStack(BlocksRegistry.ekac);
     }
 
