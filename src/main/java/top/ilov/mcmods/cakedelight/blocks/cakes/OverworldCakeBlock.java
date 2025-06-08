@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
@@ -13,6 +14,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionTypes;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
@@ -30,8 +32,7 @@ public class OverworldCakeBlock extends CakePortalBase {
 
         if (world instanceof ServerWorld && !player.isSpectator() && itemStack.isEmpty()) {
 
-            if (player.getWorld().getDimensionKey() != DimensionTypes.OVERWORLD && player.getWorld().getDimensionKey() != DimensionTypes.THE_NETHER) {
-
+            if (player.getWorld().getDimensionKey() != DimensionTypes.OVERWORLD) {
 
                 RegistryKey<World> registryKey = World.OVERWORLD;
                 ServerWorld serverWorld = ((ServerWorld)world).getServer().getWorld(registryKey);
@@ -39,22 +40,28 @@ public class OverworldCakeBlock extends CakePortalBase {
                 if (serverWorld == null) {
                     return ActionResult.FAIL;
                 }
+
+                BlockPos blockPos = serverWorld.getSpawnPos();
+                Vec3d targetPos = blockPos.toCenterPos();
+                float yaw = player.getYaw();
+                float pitch = player.getPitch();
+
                 tryEat(world, pos, state, player);
+
+                if (player instanceof ServerPlayerEntity serverPlayer) {
+                    serverPlayer.teleport(serverWorld, targetPos.x, targetPos.y, targetPos.z, yaw, pitch);
+                }
 
                 PlayerEntity teleportedPlayer = (PlayerEntity) player.moveToWorld(serverWorld);
                 if (teleportedPlayer != null) {
-                    teleportedPlayer.refreshPositionAfterTeleport(serverWorld.getSpawnPos().getX() + 1, serverWorld.getSpawnPos().getY(), serverWorld.getSpawnPos().getZ());
+                    teleportedPlayer.refreshPositionAfterTeleport(serverWorld.getSpawnPos().getX() + 1,
+                            serverWorld.getSpawnPos().getY(), serverWorld.getSpawnPos().getZ());
                 }
+
                 return ActionResult.SUCCESS;
 
-
             } else {
-                if (player.getWorld().getDimensionKey() == DimensionTypes.OVERWORLD) {
-                    player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake"),true);
-                }
-                if (player.getWorld().getDimensionKey() == DimensionTypes.THE_NETHER) {
-                    player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake_at_nether"),true);
-                }
+                player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_overworld_cake"),true);
             }
 
         }

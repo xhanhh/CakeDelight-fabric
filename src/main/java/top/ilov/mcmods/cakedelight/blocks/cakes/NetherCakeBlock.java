@@ -13,10 +13,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionTypes;
-import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
+import top.ilov.mcmods.cakedelight.utils.NetherTeleportHelper;
 
 public class NetherCakeBlock extends CakePortalBase {
 
@@ -34,21 +35,32 @@ public class NetherCakeBlock extends CakePortalBase {
 
             if (player.getWorld().getDimensionKey() != DimensionTypes.THE_NETHER) {
 
-                ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
-
-                player.getWorld().getProfiler().push("portal");
-                player.requestTeleportAndDismount(player.getX(), player.getY(), player.getZ());
-                player.moveToWorld(((ServerWorld) world).getServer().getWorld(World.NETHER));
-
-                player.getWorld().getProfiler().pop();
-
-                if (state.get(BITES) == 0) {
-                    player.setStackInHand(hand, new ItemStack(BlocksRegistry.overworld_cake));
+                ServerWorld nether = ((ServerWorld) world).getServer().getWorld(World.NETHER);
+                if (nether == null) {
+                    return ActionResult.FAIL;
                 }
+
+                BlockPos spawnPos  = NetherTeleportHelper.findSafeNetherSpawn(nether, player);
+                if (spawnPos  == null) {
+                    spawnPos = new BlockPos(0, 70, 0);
+                    NetherTeleportHelper.checkPlatformAndPlaceCake(nether, spawnPos, player.getHorizontalFacing());
+                }
+
+                Vec3d targetPos = spawnPos.toCenterPos();
+                float yaw = player.getYaw();
+                float pitch = player.getPitch();
+
+                if (player instanceof ServerPlayerEntity serverPlayer) {
+                    serverPlayer.teleport(nether, targetPos.x, targetPos.y, targetPos.z, yaw, pitch);
+                }
+
+                NetherTeleportHelper.checkPlatformAndPlaceCake(nether, spawnPos, player.getHorizontalFacing());
+
+                return tryEat(world, pos, state, player);
 
             } else {
                 player.sendMessage(Text.translatable("msg.cakedelight.cannot_eat_nether_cake"),true);
-                return ActionResult.FAIL;
+
             }
 
         }
@@ -61,12 +73,16 @@ public class NetherCakeBlock extends CakePortalBase {
         }
 
         if (world.isClient && itemStack.isEmpty()) {
+            if (tryEat(world, pos, state, player).isAccepted()) {
+                return ActionResult.SUCCESS;
+            }
 
-            return ActionResult.CONSUME;
-
+            if (itemStack.isEmpty()) {
+                return ActionResult.CONSUME;
+            }
         }
 
-        return tryEat(world, pos, state, player);
+        return ActionResult.PASS;
 
     }
 }
