@@ -3,7 +3,7 @@
 	"id": "cakedelight",
 	"version": "${version}",
 	"name": "Cake Delight",
-	"description": "Some meals about cake.",
+	"description": "Added teleport cakes for traveling back and forth among the three dimensions, as well as other interesting foods and interactions.",
 	"authors": [
 		"xhanhh"
 	],
