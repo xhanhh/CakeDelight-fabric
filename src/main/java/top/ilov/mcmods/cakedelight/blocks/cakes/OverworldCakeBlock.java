@@ -50,11 +50,7 @@ public class OverworldCakeBlock extends CakePortalBase {
 
                 if (player instanceof ServerPlayerEntity serverPlayer) {
                     serverPlayer.teleport(serverWorld, targetPos.x, targetPos.y, targetPos.z, yaw, pitch);
-                }
-
-                PlayerEntity teleportedPlayer = (PlayerEntity) player.moveToWorld(serverWorld);
-                if (teleportedPlayer != null) {
-                    teleportedPlayer.refreshPositionAfterTeleport(serverWorld.getSpawnPos().getX() + 1,
+                    serverPlayer.refreshPositionAfterTeleport(serverWorld.getSpawnPos().getX() + 1,
                             serverWorld.getSpawnPos().getY(), serverWorld.getSpawnPos().getZ());
                 }
 
