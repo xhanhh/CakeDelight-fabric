@@ -15,8 +15,6 @@ import static top.ilov.mcmods.cakedelight.CakeDelightMod.MOD_ID;
 
 public class ExperimentalBlocksRegistry {
 
-    public static final CakeBlock nether_cake = registerCakeBlock("nether_cake", new NetherCakeBlock(FabricBlockSettings.create().hardness(0.5F)
-            .sounds(BlockSoundGroup.WOOL)));
 
     protected static CakeBlock registerCakeBlock(String name, CakeBlock block) {
 
