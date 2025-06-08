@@ -70,6 +70,8 @@ public class NetherCakeBlock extends CakePortalBase {
             world.setBlockState(pos, state.with(BITES, state.get(BITES) - 1));
             itemStack.decrement(1);
 
+            return ActionResult.SUCCESS;
+
         }
 
         if (world.isClient && itemStack.isEmpty()) {
