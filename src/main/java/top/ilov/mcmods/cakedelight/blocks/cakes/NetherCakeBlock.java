@@ -4,10 +4,12 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.component.ComponentsAccess;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.tooltip.TooltipAppender;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.IntProperty;
@@ -15,7 +17,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -25,9 +26,9 @@ import net.minecraft.world.gen.feature.EndPlatformFeature;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
 import top.ilov.mcmods.cakedelight.utils.NetherTeleportHelper;
 
-import java.util.List;
+import java.util.function.Consumer;
 
-public class NetherCakeBlock extends CakePortalBase {
+public class NetherCakeBlock extends CakePortalBase implements TooltipAppender {
 
     public NetherCakeBlock(Settings settings) {
         super(settings);
@@ -92,26 +93,25 @@ public class NetherCakeBlock extends CakePortalBase {
     }
 
     @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
+    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
                                              PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (stack.getItem() == Items.OBSIDIAN && state.get(BITES) > 0 && !world.isClient) {
 
             world.setBlockState(pos, state.with(BITES, state.get(BITES) - 1));
             stack.decrement(1);
 
-            return ItemActionResult.SUCCESS;
+            return ActionResult.SUCCESS;
         }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return ActionResult.PASS_TO_DEFAULT_BLOCK_ACTION;
     }
 
     @Environment(EnvType.CLIENT)
-    @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+    public void appendTooltip(Item.TooltipContext context, Consumer<Text> textConsumer, TooltipType type, ComponentsAccess components) {
 
         if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("tooltip.cakedelight.nether_cake"));
+            textConsumer.accept(Text.translatable("tooltip.cakedelight.nether_cake"));
         } else {
-            tooltip.add(Text.translatable("tooltip.cakedelight.shift"));
+            textConsumer.accept(Text.translatable("tooltip.cakedelight.shift"));
         }
 
     }

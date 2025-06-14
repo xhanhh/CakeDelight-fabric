@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import top.ilov.mcmods.cakedelight.CakeDelightMod;
+import top.ilov.mcmods.cakedelight.sounds.SoundsRegistry;
 
 import java.util.Random;
 
@@ -51,8 +52,7 @@ public class CakePortalBase extends CakeBlock {
         Random random = new Random();
 
         if (CakeDelightMod.CONFIG.isEnable_the_sound_of_eating_cakes() | FabricLoader.getInstance().isModLoaded("cakechomps")) {
-            ItemStack stack = state.getBlock().getPickStack(world, pos, state);
-            player.playSound(player.getEatSound(stack), 0.5f + 0.4f * (float) random.nextInt(2),
+            player.playSound(SoundsRegistry.eat_cake, 0.5f + 0.4f * (float) random.nextInt(2),
                     (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
         }
 

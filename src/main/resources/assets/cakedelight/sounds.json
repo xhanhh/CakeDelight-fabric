@@ -5,5 +5,12 @@
       "cakedelight:block/tae2",
       "cakedelight:block/tae3"
     ]
+  },
+  "eating_cake": {
+    "sounds": [
+      "cakedelight:block/eat1",
+      "cakedelight:block/eat2",
+      "cakedelight:block/eat3"
+    ]
   }
 }

@@ -1,6 +1,5 @@
 package top.ilov.mcmods.cakedelight.utils;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;

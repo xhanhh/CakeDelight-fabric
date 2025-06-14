@@ -1,47 +1,39 @@
 package top.ilov.mcmods.cakedelight.items.materials;
 
-import net.minecraft.item.*;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.sound.SoundEvent;
+import com.google.common.collect.Maps;
+import net.minecraft.item.Item;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentAsset;
+import net.minecraft.item.equipment.EquipmentType;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Util;
-import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
+import top.ilov.mcmods.cakedelight.CakeDelightMod;
 
-import java.util.EnumMap;
-import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map;
 
-public class CakeDelightMaterials {
+import static net.minecraft.item.equipment.EquipmentAssetKeys.register;
 
-    public static final RegistryEntry<ArmorMaterial> EKAC;
+public interface CakeDelightMaterials {
 
-    private static RegistryEntry<ArmorMaterial> register(String id, EnumMap<ArmorItem.Type, Integer> defense, int enchantability, RegistryEntry<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
-        List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(Identifier.ofVanilla(id)));
-        return register(id, defense, enchantability, equipSound, toughness, knockbackResistance, repairIngredient, list);
+    RegistryKey<EquipmentAsset> EKAC_KEY = register("ekac");
+
+    TagKey<Item> EKAC_TAG = of("ekac");
+
+    ArmorMaterial EKAC = new ArmorMaterial(10, createDefenseMap(1, 1, 1, 2,
+            1), 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, EKAC_TAG, EKAC_KEY);
+
+    private static Map<EquipmentType, Integer> createDefenseMap(int bootsDefense, int leggingsDefense, int chestplateDefense,
+                                                                int helmetDefense, int bodyDefense) {
+        return Maps.newEnumMap(Map.of(EquipmentType.BOOTS, bootsDefense, EquipmentType.LEGGINGS,
+                leggingsDefense, EquipmentType.CHESTPLATE, chestplateDefense, EquipmentType.HELMET,
+                helmetDefense, EquipmentType.BODY, bodyDefense));
     }
 
-    private static RegistryEntry<ArmorMaterial> register(String id, EnumMap<ArmorItem.Type, Integer> defense, int enchantability, RegistryEntry<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient, List<ArmorMaterial.Layer> layers) {
-        EnumMap<ArmorItem.Type, Integer> enumMap = new EnumMap<>(ArmorItem.Type.class);
-
-        for(ArmorItem.Type type : ArmorItem.Type.values()) {
-            enumMap.put(type, (Integer)defense.get(type));
-        }
-
-        return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.ofVanilla(id), new ArmorMaterial(enumMap, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
-    }
-
-    static {
-        EKAC = register("ekac", Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
-            map.put(ArmorItem.Type.BOOTS, 1);
-            map.put(ArmorItem.Type.LEGGINGS, 1);
-            map.put(ArmorItem.Type.CHESTPLATE, 1);
-            map.put(ArmorItem.Type.HELMET, 2);
-            map.put(ArmorItem.Type.BODY, 1);
-        }), 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.ofItems(BlocksRegistry.ekac));
+    private static TagKey<Item> of(String id) {
+        return TagKey.of(RegistryKeys.ITEM, Identifier.of(CakeDelightMod.MOD_ID, id));
     }
 
 }
