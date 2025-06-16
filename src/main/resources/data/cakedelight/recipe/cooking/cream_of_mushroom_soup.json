@@ -1,12 +1,8 @@
 {
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:mushrooms"
-    },
-    {
-      "tag": "c:cream"
-    }
+    "#c:mushrooms",
+    "#c:cream"
   ],
   "recipe_book_tab": "misc",
   "result": {

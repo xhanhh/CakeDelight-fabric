@@ -1,9 +1,7 @@
 {
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:cream"
-    }
+    "#c:cream"
   ],
   "recipe_book_tab": "misc",
   "result": {

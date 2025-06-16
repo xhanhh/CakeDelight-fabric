@@ -1,15 +1,9 @@
 {
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:sands"
-    },
-    {
-      "tag": "c:dirts"
-    },
-    {
-      "tag": "c:cream"
-    }
+    "#c:sands",
+    "#c:dirts",
+    "#c:cream"
   ],
   "recipe_book_tab": "misc",
   "result": {

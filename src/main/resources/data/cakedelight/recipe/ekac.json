@@ -10,25 +10,10 @@
 
   "key":
   {
-    "A":
-    {
-      "item": "minecraft:wheat"
-    },
-
-    "B":
-    {
-      "item": "minecraft:sugar"
-
-    },
-
-    "C":
-    {
-      "item": "minecraft:egg"
-    },
-    "D":
-    {
-      "tag": "c:milks"
-    }
+    "A": "minecraft:wheat",
+    "B": "minecraft:sugar",
+    "C": "minecraft:egg",
+    "D": "#c:milks"
   },
 
   "result":

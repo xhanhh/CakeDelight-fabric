@@ -10,10 +10,7 @@
 
   "key":
   {
-    "A":
-    {
-      "item": "minecraft:wheat"
-    }
+    "A": "minecraft:wheat"
   },
 
   "result":

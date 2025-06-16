@@ -1,15 +1,9 @@
 {
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "item": "minecraft:ender_eye"
-    },
-    {
-      "item": "minecraft:soul_sand"
-    },
-    {
-      "tag": "c:cream"
-    }
+    "minecraft:ender_eye",
+    "minecraft:soul_sand",
+    "#c:cream"
   ],
   "recipe_book_tab": "misc",
   "result": {

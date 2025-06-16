@@ -1,15 +1,9 @@
 {
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:crops/tomato"
-    },
-    {
-      "tag": "c:pasta"
-    },
-    {
-      "tag": "c:cooked_eggs"
-    }
+    "#c:crops/tomato",
+    "#c:pasta",
+    "#c:cooked_eggs"
   ],
   "recipe_book_tab": "misc",
   "result": {

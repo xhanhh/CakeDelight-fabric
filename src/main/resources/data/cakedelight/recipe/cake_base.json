@@ -1,24 +1,11 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
 
-  "pattern":
-  [
-    "   ",
-    " C ",
-    "AAA"
+  "ingredients": [
+    "minecraft:wheat",
+    "minecraft:wheat",
+    "minecraft:egg"
   ],
-
-  "key":
-  {
-    "A":
-    {
-      "item": "minecraft:wheat"
-    },
-    "C":
-    {
-      "item": "minecraft:egg"
-    }
-  },
 
   "result":
   {

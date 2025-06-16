@@ -1,12 +1,8 @@
 {
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:crops/tomato"
-    },
-    {
-      "item": "minecraft:beef"
-    }
+    "#c:crops/tomato",
+    "minecraft:beef"
   ],
   "recipe_book_tab": "misc",
   "result": {

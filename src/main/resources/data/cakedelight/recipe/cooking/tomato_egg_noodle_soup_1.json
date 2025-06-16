@@ -1,12 +1,8 @@
 {
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "item": "cakedelight:eggs_with_tomato"
-    },
-    {
-      "tag": "c:pasta"
-    }
+    "cakedelight:eggs_with_tomato",
+    "#c:pasta"
   ],
   "recipe_book_tab": "misc",
   "result": {

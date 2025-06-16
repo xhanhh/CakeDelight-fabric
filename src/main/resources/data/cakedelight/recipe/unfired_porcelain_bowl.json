@@ -10,10 +10,7 @@
 
   "key":
   {
-    "A":
-    {
-      "item": "minecraft:clay_ball"
-    }
+    "A": "minecraft:clay_ball"
   },
 
   "result":

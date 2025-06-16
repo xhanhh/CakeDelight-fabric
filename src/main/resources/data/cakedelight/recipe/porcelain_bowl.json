@@ -1,8 +1,6 @@
 {
   "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "cakedelight:unfired_porcelain_bowl"
-  },
+  "ingredient": "cakedelight:unfired_porcelain_bowl",
   "result": {
     "count": 1,
     "id": "cakedelight:porcelain_bowl"
