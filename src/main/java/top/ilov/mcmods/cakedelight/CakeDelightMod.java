@@ -2,8 +2,11 @@ package top.ilov.mcmods.cakedelight;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -14,6 +17,8 @@ import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 import top.ilov.mcmods.cakedelight.blocks.ExperimentalBlocksRegistry;
 import top.ilov.mcmods.cakedelight.items.ItemsRegistry;
 import top.ilov.mcmods.cakedelight.sounds.SoundsRegistry;
+
+import java.util.Map;
 
 import static top.ilov.mcmods.cakedelight.ItemGroup.ITEM_GROUP;
 
@@ -74,6 +79,24 @@ public class CakeDelightMod implements ModInitializer {
 				})
 				.build()
 		);
+
+		ItemTooltipCallback.EVENT.register((stack, context, type, tooltip) -> {
+			Map<Item, String> tooltipMap = Map.of(
+					BlocksRegistry.ekac.asItem(), "tooltip.cakedelight.ekac",
+					BlocksRegistry.end_cake.asItem(), "tooltip.cakedelight.end_cake",
+					BlocksRegistry.nether_cake.asItem(), "tooltip.cakedelight.nether_cake"
+			);
+
+			String translationKey = tooltipMap.get(stack.getItem());
+
+			if (translationKey != null) {
+				if (Screen.hasShiftDown()) {
+					tooltip.add(Text.translatable(translationKey));
+				} else {
+					tooltip.add(Text.translatable("tooltip.cakedelight.shift"));
+				}
+			}
+		});
 
 	}
 }

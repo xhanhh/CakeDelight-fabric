@@ -1,16 +1,9 @@
 package top.ilov.mcmods.cakedelight.blocks.cakes;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.component.ComponentsAccess;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.tooltip.TooltipAppender;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.IntProperty;
@@ -28,9 +21,7 @@ import net.minecraft.world.gen.feature.EndPlatformFeature;
 import top.ilov.mcmods.cakedelight.blocks.BlocksRegistry;
 import top.ilov.mcmods.cakedelight.blocks.CakePortalBase;
 
-import java.util.function.Consumer;
-
-public class EndCakeBlock extends CakePortalBase implements TooltipAppender {
+public class EndCakeBlock extends CakePortalBase {
 
     public EndCakeBlock(Settings settings) {
         super(settings);
@@ -116,14 +107,4 @@ public class EndCakeBlock extends CakePortalBase implements TooltipAppender {
         return ActionResult.PASS_TO_DEFAULT_BLOCK_ACTION;
     }
 
-    @Environment(EnvType.CLIENT)
-    public void appendTooltip(Item.TooltipContext context, Consumer<Text> textConsumer, TooltipType type, ComponentsAccess components) {
-
-        if (Screen.hasShiftDown()) {
-            textConsumer.accept(Text.translatable("tooltip.cakedelight.end_cake"));
-        } else {
-            textConsumer.accept(Text.translatable("tooltip.cakedelight.shift"));
-        }
-
-    }
 }

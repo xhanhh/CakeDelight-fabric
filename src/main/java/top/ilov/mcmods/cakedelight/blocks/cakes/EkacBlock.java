@@ -1,23 +1,16 @@
 package top.ilov.mcmods.cakedelight.blocks.cakes;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.component.ComponentsAccess;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipAppender;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -32,9 +25,8 @@ import top.ilov.mcmods.cakedelight.CakeDelightMod;
 import top.ilov.mcmods.cakedelight.sounds.SoundsRegistry;
 
 import java.util.Random;
-import java.util.function.Consumer;
 
-public class EkacBlock extends CakeBlock implements TooltipAppender {
+public class EkacBlock extends CakeBlock {
 
     public static final IntProperty BITES = Properties.BITES;
 
@@ -114,17 +106,6 @@ public class EkacBlock extends CakeBlock implements TooltipAppender {
             return Blocks.AIR.getDefaultState();
         }
         return super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
-    }
-
-    @Environment(EnvType.CLIENT)
-    public void appendTooltip(Item.TooltipContext context, Consumer<Text> textConsumer, TooltipType type, ComponentsAccess components) {
-
-        if (Screen.hasShiftDown()) {
-            textConsumer.accept(Text.translatable("tooltip.cakedelight.ekac"));
-        } else {
-            textConsumer.accept(Text.translatable("tooltip.cakedelight.shift"));
-        }
-
     }
 
 }
