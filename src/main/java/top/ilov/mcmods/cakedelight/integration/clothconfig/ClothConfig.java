@@ -35,6 +35,14 @@ public class ClothConfig {
         );
 
         general.addEntry(entryBuilder
+                .startBooleanToggle(Text.translatable("config.cakedelight.enable_tooltips_for_displaying_item"), CakeDelightMod.CONFIG.isEnable_tooltips_for_displaying_item())
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("config.cakedelight.enable_tooltips_for_displaying_item.tooltip"))
+                .setSaveConsumer(newValue -> CakeDelightMod.CONFIG.setEnable_tooltips_for_displaying_item(newValue))
+                .build()
+        );
+
+        general.addEntry(entryBuilder
                 .startBooleanToggle(Text.translatable("config.cakedelight.enable_experimental_content"), CakeDelightMod.CONFIG.isEnable_experimental_contents())
                 .setDefaultValue(false)
                 .setTooltip(Text.translatable("config.cakedelight.enable_experimental_content.tooltip"))

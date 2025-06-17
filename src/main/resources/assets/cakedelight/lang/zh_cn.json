@@ -51,8 +51,10 @@
   "config.cakedelight.enable_eating_ekac_sound.tooltip": "该音效相比原版的蛋糕是倒放的。",
   "config.cakedelight.enable_eating_cakes_sound": "启用食用本模组蛋糕时的音效",
   "config.cakedelight.enable_eating_cakes_sound.tooltip": "启用食用本模组蛋糕时的音效，为原版风格。",
+  "config.cakedelight.enable_tooltips_for_displaying_item": "启用显示物品的Tooltips",
+  "config.cakedelight.enable_tooltips_for_displaying_item.tooltip": "鼠标移到一些物品上，有‘§7按住§r §eShift§r §7以浏览更多§r’字样的提示。",
   "config.cakedelight.enable_experimental_content": "启用实验性内容（开发模式）",
-  "config.cakedelight.enable_experimental_content.tooltip": "这些内容未经测试，可能会有很严重的Bug：包括但不限于游戏崩溃、存档损坏。仅供开发使用，请勿开启该选项。",
+  "config.cakedelight.enable_experimental_content.tooltip": "【在该版本，该选项没有任何功能】这些内容未经测试，可能会有很严重的Bug：包括但不限于游戏崩溃、存档损坏，仅供开发使用。",
 
   "modmenu.nameTranslation.cakedelight": "Cake Delight",
   "modmenu.descriptionTranslation.cakedelight": "添加了用于在三个维度中往返的传送蛋糕、以及其它有趣的食物及联动。"

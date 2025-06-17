@@ -81,6 +81,11 @@ public class CakeDelightMod implements ModInitializer {
 		);
 
 		ItemTooltipCallback.EVENT.register((stack, context, type, tooltip) -> {
+
+			if (!CONFIG.isEnable_tooltips_for_displaying_item()) {
+				return;
+			}
+
 			Map<Item, String> tooltipMap = Map.of(
 					BlocksRegistry.ekac.asItem(), "tooltip.cakedelight.ekac",
 					BlocksRegistry.end_cake.asItem(), "tooltip.cakedelight.end_cake",

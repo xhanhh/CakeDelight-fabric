@@ -12,6 +12,7 @@ public final class CakeConfig {
 
     private boolean enable_the_sound_of_eating_ekac = true;
     private boolean enable_the_sound_of_eating_cakes = true;
+    private boolean enable_tooltips_for_displaying_item = true;
     private boolean enable_experimental_content = false;
 
     public boolean isEnableEkacSound() {
@@ -20,6 +21,10 @@ public final class CakeConfig {
 
     public boolean isEnable_the_sound_of_eating_cakes() {
         return enable_the_sound_of_eating_cakes;
+    }
+
+    public boolean isEnable_tooltips_for_displaying_item() {
+        return enable_tooltips_for_displaying_item;
     }
 
     public boolean isEnable_experimental_contents() {
@@ -34,6 +39,10 @@ public final class CakeConfig {
 
     public void setEnable_the_sound_of_eating_cakes(boolean enable_the_sound_of_eating_cakes) {
         this.enable_the_sound_of_eating_cakes = enable_the_sound_of_eating_cakes;
+    }
+
+    public void setEnable_tooltips_for_displaying_item(boolean enableTooltipsForDisplayingItem) {
+        this.enable_tooltips_for_displaying_item = enableTooltipsForDisplayingItem;
     }
 
     public void setEnable_experimental_content(boolean enableExperimentalContent) {

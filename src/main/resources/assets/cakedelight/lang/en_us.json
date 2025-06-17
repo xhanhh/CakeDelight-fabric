@@ -51,8 +51,10 @@
   "config.cakedelight.enable_eating_ekac_sound.tooltip": "Compared to vanilla cake, the sound is inverted.",
   "config.cakedelight.enable_eating_cakes_sound": "Enable sound when eating cakes from this mod.",
   "config.cakedelight.enable_eating_cakes_sound.tooltip": "Enable sound when eating cakes from this mod.",
+  "config.cakedelight.enable_tooltips_for_displaying_item": "Enable tooltips for displaying items",
+  "config.cakedelight.enable_tooltips_for_displaying_item.tooltip": "A prompt with the words '§7Hold§r §eShift§r'.",
   "config.cakedelight.enable_experimental_content": "Enable Experimental Content (Development mode)",
-  "config.cakedelight.enable_experimental_content.tooltip": "These contents have not been tested, there may be serious bugs, only for testing use, do not open privately.",
+  "config.cakedelight.enable_experimental_content.tooltip": "[There are no functions in this version] These contents have not been tested, there may be serious bugs, only for testing use.",
 
   "modmenu.nameTranslation.cakedelight": "Cake Delight",
   "modmenu.descriptionTranslation.cakedelight": "Added teleport cakes for traveling back and forth among the three dimensions, as well as other interesting foods and interactions."
