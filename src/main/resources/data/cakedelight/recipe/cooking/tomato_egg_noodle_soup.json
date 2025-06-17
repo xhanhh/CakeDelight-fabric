@@ -3,7 +3,7 @@
   "ingredients": [
     "#c:crops/tomato",
     "#c:pasta",
-    "#c:cooked_eggs"
+    "#c:eggs"
   ],
   "recipe_book_tab": "misc",
   "result": {
