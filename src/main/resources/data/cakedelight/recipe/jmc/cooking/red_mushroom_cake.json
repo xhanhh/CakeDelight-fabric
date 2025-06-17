@@ -7,12 +7,8 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "item": "minecraft:red_mushroom"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "minecraft:red_mushroom",
+    "minecraft:sugar"
   ],
   "recipe_book_tab": "misc",
   "result": {

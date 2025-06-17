@@ -7,15 +7,9 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "#c:milks",
+    "minecraft:carrot",
+    "minecraft:sugar"
   ],
   "recipe_book_tab": "misc",
   "result": {

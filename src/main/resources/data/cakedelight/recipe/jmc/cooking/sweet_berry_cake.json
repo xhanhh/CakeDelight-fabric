@@ -7,15 +7,9 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "item": "minecraft:sweet_berries"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "minecraft:sweet_berries",
+    "#c:milks",
+    "minecraft:sugar"
   ],
   "recipe_book_tab": "misc",
   "result": {

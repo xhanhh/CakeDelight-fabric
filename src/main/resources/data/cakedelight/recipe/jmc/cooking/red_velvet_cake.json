@@ -7,15 +7,9 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "tag": "c:red_dye"
-    },
-    {
-      "item": "minecraft:cocoa_beans"
-    }
+    "#c:milks",
+    "#c:red_dye",
+    "minecraft:cocoa_beans"
   ],
   "recipe_book_tab": "misc",
   "result": {

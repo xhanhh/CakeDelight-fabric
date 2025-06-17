@@ -7,15 +7,9 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "item": "minecraft:pumpkin"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "#c:milks",
+    "minecraft:pumpkin",
+    "minecraft:sugar"
   ],
   "recipe_book_tab": "misc",
   "result": {

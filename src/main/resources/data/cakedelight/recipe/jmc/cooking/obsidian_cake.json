@@ -7,12 +7,8 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "item": "minecraft:obsidian"
-    }
+    "#c:milks",
+    "minecraft:obsidian"
   ],
   "recipe_book_tab": "misc",
   "result": {

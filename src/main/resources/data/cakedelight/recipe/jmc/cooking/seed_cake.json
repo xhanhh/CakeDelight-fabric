@@ -7,15 +7,9 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "tag": "c:seeds"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "#c:milks",
+    "#c:seeds",
+    "minecraft:sugar"
   ],
   "recipe_book_tab": "misc",
   "result": {

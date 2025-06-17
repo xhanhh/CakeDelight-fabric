@@ -7,12 +7,8 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "item": "minecraft:honey_bottle"
-    }
+    "#c:milks",
+    "minecraft:honey_bottle"
   ],
   "recipe_book_tab": "misc",
   "result": {

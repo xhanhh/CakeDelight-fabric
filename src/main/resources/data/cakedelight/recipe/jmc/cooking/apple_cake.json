@@ -7,12 +7,8 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "item": "minecraft:apple"
-    }
+    "#c:milks",
+    "minecraft:apple"
   ],
   "recipe_book_tab": "misc",
   "result": {

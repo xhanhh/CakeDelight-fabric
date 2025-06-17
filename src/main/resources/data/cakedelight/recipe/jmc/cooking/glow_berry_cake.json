@@ -7,12 +7,8 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "tag": "c:milks"
-    },
-    {
-      "item": "minecraft:glow_berries"
-    }
+    "#c:milks",
+    "minecraft:glow_berries"
   ],
   "recipe_book_tab": "misc",
   "result": {

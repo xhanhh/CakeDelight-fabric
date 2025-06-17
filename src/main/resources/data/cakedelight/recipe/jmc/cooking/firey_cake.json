@@ -7,12 +7,8 @@
   ],
   "type": "farmersdelight:cooking",
   "ingredients": [
-    {
-      "item": "minecraft:magma_cream"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "minecraft:magma_cream",
+    "minecraft:sugar"
   ],
   "recipe_book_tab": "misc",
   "result": {
